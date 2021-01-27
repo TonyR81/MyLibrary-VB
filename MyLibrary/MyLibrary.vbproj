@@ -5,11 +5,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D3600999-5805-4B3D-895D-B3F8994D3533}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>MyLibrary</RootNamespace>
     <AssemblyName>MyLibrary</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -43,6 +43,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MyLibrary.Form1</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MessagingToolkit.QRCode">
       <HintPath>D:\Programmi\MessagingToolkit.QRCode.dll</HintPath>
@@ -52,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -75,7 +79,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Credentials.vb" />
+    <Compile Include="Classes\Database.vb" />
     <Compile Include="Classes\GeoLocation.vb" />
+    <Compile Include="Enumerations\ShaType.vb" />
+    <Compile Include="Interfaces\ICredentials.vb" />
+    <Compile Include="Interfaces\IDatabase.vb" />
     <Compile Include="Classes\ServerRequest.vb" />
     <Compile Include="Dialogs\MessageSplash.designer.vb">
       <DependentUpon>MessageSplash.vb</DependentUpon>
@@ -88,6 +97,12 @@
     <Compile Include="Exceptions\InternetConnectionException.vb" />
     <Compile Include="Exceptions\InvalidEmailException.vb" />
     <Compile Include="Exceptions\RequiredFieldsException.vb" />
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Interfaces\IServerRequest.vb" />
     <Compile Include="Interfaces\IServerRequestHelper.vb" />
     <Compile Include="Interfaces\IUser.vb" />
@@ -114,6 +129,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Dialogs\MessageSplash.resx">
       <DependentUpon>MessageSplash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

@@ -340,11 +340,11 @@ Public Class GeoLocation
     ''' <param name="zipCode">String</param>
     ''' <returns>Boolean</returns>
     Public Function FindCoordinates(address As String, streetNumber As String, city As String, country As String, zipCode As String) As Boolean
-        If String.IsNullOrEmpty(address) And
+        If Not String.IsNullOrEmpty(address) And
             Not String.IsNullOrEmpty(streetNumber) And
             Not String.IsNullOrEmpty(city) Then
             Dim response As JObject = New ServerRequest("location").GetResponseAsync(ToPost).Result
-            If Not IsNothing(response) AndAlso Not IsNothing(response.SelectToken("response")) AndAlso CType(response.SelectToken("response"), Boolean) Then
+            If Not IsNothing(response) Then
                 Dim json As JObject = response.SelectToken("results")(0)
                 With json
                     FormattedAddress = .Item("formatted_address")
