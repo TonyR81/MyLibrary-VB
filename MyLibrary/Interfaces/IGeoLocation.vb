@@ -14,7 +14,7 @@ Public Interface IGeoLocation
 
 #Region "Getters and Setters"
 
-        Property Status As Status
+        Property Status As GeoLocationStatus
 
 #End Region ' End Getters and Setters
 
@@ -26,7 +26,7 @@ Public Interface IGeoLocation
 
 #Region "Events"
 
-        Event StatusChanged(sender As Object, e As Status)
+        Event StatusChanged(sender As Object, e As GeoLocationStatus)
 
 #End Region ' End Events
 
@@ -48,8 +48,29 @@ Public Interface IGeoLocation
     Property Province As String
     Property Region As String
     Property PlaceId As String
-    Sub Initialize()
 
 #End Region ' End Properties
+
+#Region "Events"
+
+    Event AddressChanged(sender As Object, address As String)
+    Event StreetNumberChanged(sender As Object, streetNumber As String)
+    Event CityChanged(sender As Object, city As String)
+    Event CountryChanged(sender As Object, country As String)
+    Event ZipCodeChanged(ByVal sender As Object, ByVal zipCode As String)
+    Event ProvinceChanged(sender As Object, province As String)
+    Event RegionChanged(sender As Object, region As String)
+    Event LatitudeChanged(sender As Object, latitude As String)
+    Event LongitudeChanged(sender As Object, longitude As String)
+    Event FormattedAddressChanged(sender As Object, formattedAddress As String)
+    Event PlaceIdChanged(sender As Object, placeId As String)
+
+#End Region ' End Events
+
+#Region "Subs"
+
+    Sub Initialize()
+
+#End Region ' End Subs
 
 End Interface

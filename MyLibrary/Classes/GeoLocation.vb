@@ -35,6 +35,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mAddress = value
+            RaiseEvent AddressChanged(Me, value)
         End Set
     End Property
 
@@ -49,6 +50,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mStreetNumber = value
+            RaiseEvent StreetNumberChanged(Me, value)
         End Set
     End Property
 
@@ -63,6 +65,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mCity = value
+            RaiseEvent CityChanged(Me, value)
         End Set
     End Property
 
@@ -77,6 +80,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mCountry = value
+            RaiseEvent CountryChanged(Me, value)
         End Set
     End Property
 
@@ -91,6 +95,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mProvince = value
+            RaiseEvent ProvinceChanged(Me, value)
         End Set
     End Property
 
@@ -105,6 +110,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mRegion = value
+            RaiseEvent RegionChanged(Me, value)
         End Set
     End Property
 
@@ -119,6 +125,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mZipCode = value
+            RaiseEvent ZipCodeChanged(Me, value)
         End Set
     End Property
 
@@ -133,6 +140,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mFormattedAddress = value
+            RaiseEvent FormattedAddressChanged(Me, value)
         End Set
     End Property
 
@@ -147,6 +155,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mLatitude = value
+            RaiseEvent LatitudeChanged(Me, value)
         End Set
     End Property
 
@@ -161,6 +170,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mLongitude = value
+            RaiseEvent LongitudeChanged(Me, value)
         End Set
     End Property
 
@@ -198,6 +208,7 @@ Public Class GeoLocation
         End Get
         Set(ByVal value As String)
             mPlaceId = value
+            RaiseEvent PlaceIdChanged(Me, value)
         End Set
     End Property
 
@@ -410,6 +421,22 @@ Public Class GeoLocation
 
 #End Region ' End Subs
 
+#Region "Events"
+
+    Public Event AddressChanged(ByVal sender As Object, ByVal address As String) Implements IGeoLocation.AddressChanged
+    Public Event StreetNumberChanged(ByVal sender As Object, ByVal streetNumber As String) Implements IGeoLocation.StreetNumberChanged
+    Public Event CityChanged(ByVal sender As Object, ByVal city As String) Implements IGeoLocation.CityChanged
+    Public Event CountryChanged(ByVal sender As Object, ByVal country As String) Implements IGeoLocation.CountryChanged
+    Public Event ZipCodeChanged(ByVal sender As Object, ByVal zipCode As String) Implements IGeoLocation.ZipCodeChanged
+    Public Event ProvinceChanged(ByVal sender As Object, ByVal province As String) Implements IGeoLocation.ProvinceChanged
+    Public Event RegionChanged(ByVal sender As Object, ByVal region As String) Implements IGeoLocation.RegionChanged
+    Public Event LatitudeChanged(ByVal sender As Object, ByVal latitude As String) Implements IGeoLocation.LatitudeChanged
+    Public Event LongitudeChanged(ByVal sender As Object, ByVal longitude As String) Implements IGeoLocation.LongitudeChanged
+    Public Event FormattedAddressChanged(ByVal sender As Object, ByVal formattedAddress As String) Implements IGeoLocation.FormattedAddressChanged
+    Public Event PlaceIdChanged(ByVal sender As Object, ByVal placeId As String) Implements IGeoLocation.PlaceIdChanged
+
+#End Region ' End Events
+
     ''' <summary>
     ''' LocationStatus class
     ''' <para>Created by Antonino Razeti on January 26, 2021</para>
@@ -422,7 +449,7 @@ Public Class GeoLocation
 
 #Region "Private Declarations"
 
-        Private mStatus As Status
+        Private mStatus As GeoLocationStatus
         Private StringValue As String = "ZERO_RESULTS"
         Private IntValue As Integer = 0
 
@@ -434,19 +461,19 @@ Public Class GeoLocation
         ''' Gets or sets Status
         ''' </summary>
         ''' <returns>Status</returns>
-        <DefaultValue(Status.ZERO_RESULTS), Category("Properties")>
-        Public Property Status() As Status Implements IGeoLocation.ILocationStatus.Status
+        <DefaultValue(GeoLocationStatus.ZERO_RESULTS), Category("Properties")>
+        Public Property Status() As GeoLocationStatus Implements IGeoLocation.ILocationStatus.Status
             Get
                 Return mStatus
             End Get
-            Set(ByVal value As Status)
+            Set(ByVal value As GeoLocationStatus)
                 mStatus = value
                 Select Case value
-                    Case Status.OK
+                    Case GeoLocationStatus.OK
                         SetLocationStatus("OK", 1)
-                    Case Status.REQUEST_DENIED
+                    Case GeoLocationStatus.REQUEST_DENIED
                         SetLocationStatus("REQUEST_DENIED", 2)
-                    Case Status.ZERO_RESULTS
+                    Case GeoLocationStatus.ZERO_RESULTS
                         SetLocationStatus("ZERO_RESULTS", 0)
                 End Select
                 RaiseEvent StatusChanged(Me, value)
@@ -468,7 +495,7 @@ Public Class GeoLocation
         ''' Creates a new instance of LocationStatus class given the specified status
         ''' </summary>
         ''' <param name="status">Status</param>
-        Public Sub New(status As Status)
+        Public Sub New(status As GeoLocationStatus)
             Me.Status = status
         End Sub
 
@@ -489,17 +516,17 @@ Public Class GeoLocation
         ''' </summary>
         ''' <param name="value">Integer</param>
         ''' <returns>Status</returns>
-        Public Shared Function GetStatus(value As Integer) As Status
-            Dim res As Status
+        Public Shared Function GetStatus(value As Integer) As GeoLocationStatus
+            Dim res As GeoLocationStatus
             Select Case value
                 Case 0
-                    res = Status.ZERO_RESULTS
+                    res = GeoLocationStatus.ZERO_RESULTS
                 Case 1
-                    res = Status.OK
+                    res = GeoLocationStatus.OK
                 Case 2
-                    res = Status.REQUEST_DENIED
+                    res = GeoLocationStatus.REQUEST_DENIED
                 Case Else
-                    res = Status.ZERO_RESULTS
+                    res = GeoLocationStatus.ZERO_RESULTS
             End Select
             Return res
         End Function
@@ -509,17 +536,17 @@ Public Class GeoLocation
         ''' </summary>
         ''' <param name="value">String</param>
         ''' <returns>Status</returns>
-        Public Shared Function GetStatus(value As String) As Status
-            Dim res As Status
+        Public Shared Function GetStatus(value As String) As GeoLocationStatus
+            Dim res As GeoLocationStatus
             Select Case value
                 Case "ZERO_RESULTS"
-                    res = Status.ZERO_RESULTS
+                    res = GeoLocationStatus.ZERO_RESULTS
                 Case "OK"
-                    res = Status.OK
+                    res = GeoLocationStatus.OK
                 Case "REQUEST_DENIED"
-                    res = Status.REQUEST_DENIED
+                    res = GeoLocationStatus.REQUEST_DENIED
                 Case Else
-                    res = Status.ZERO_RESULTS
+                    res = GeoLocationStatus.ZERO_RESULTS
             End Select
             Return res
         End Function
@@ -540,7 +567,7 @@ Public Class GeoLocation
         ''' Initialize current location status
         ''' </summary>
         Private Sub Initialize()
-            Status = Status.ZERO_RESULTS
+            Status = GeoLocationStatus.ZERO_RESULTS
         End Sub
 
         ''' <summary>
@@ -557,10 +584,9 @@ Public Class GeoLocation
 
 #Region "Events"
 
-        Public Event StatusChanged(ByVal sender As Object, ByVal status As Status) Implements IGeoLocation.ILocationStatus.StatusChanged
+        Public Event StatusChanged(ByVal sender As Object, ByVal status As GeoLocationStatus) Implements IGeoLocation.ILocationStatus.StatusChanged
 
 #End Region ' Fine Events
-
 
     End Class
 

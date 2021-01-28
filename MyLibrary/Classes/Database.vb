@@ -87,7 +87,7 @@ Public MustInherit Class Database
     ''' Returns a string that represents the arguments of current database object
     ''' </summary>
     ''' <returns>String</returns>
-    Public Function ToPost() As String Implements IServerRequestHelper.ToPost
+    Public Overridable Function ToPost() As String Implements IServerRequestHelper.ToPost
         Return New StringBuilder().
             Append(String.Format("id={0}&", Id)).
             Append("id_parent={0}", IdParent).ToString
@@ -98,7 +98,7 @@ Public MustInherit Class Database
     ''' </summary>
     ''' <returns>JObject</returns>
     ''' <see cref="JObject"/>
-    Public Function ToJson() As JObject Implements IServerRequestHelper.ToJson
+    Public Overridable Function ToJson() As JObject Implements IServerRequestHelper.ToJson
         Return New JObject() From {
             {"id", Id},
             {"id_parent", IdParent}}
@@ -111,7 +111,7 @@ Public MustInherit Class Database
     ''' <summary>
     ''' Initialize current database object
     ''' </summary>
-    Private Sub Initialize()
+    Protected Friend Overridable Sub Initialize() Implements IDatabase.Initialize
         Id = 0
         IdParent = 0
     End Sub
@@ -121,7 +121,7 @@ Public MustInherit Class Database
     ''' </summary>
     ''' <param name="json">JObject</param>
     ''' <see cref="JObject"/>
-    Public Sub FromJson(json As JObject) Implements IServerRequestHelper.FromJson
+    Public Overridable Sub FromJson(json As JObject) Implements IServerRequestHelper.FromJson
         If Not IsNothing(json) Then
             Id = If(Not IsNothing(json.SelectToken("id")), json.SelectToken("id"), 0)
             IdParent = If(Not IsNothing(json.SelectToken("id_parent")), json.SelectToken("id_parent"), 0)

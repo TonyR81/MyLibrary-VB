@@ -15,6 +15,12 @@ Public Interface IDatabase
 
 #End Region ' End Getters and Setters
 
+#Region "Subs"
+
+    Sub Initialize()
+
+#End Region ' End Subs
+
 #Region "Events"
 
     Event IdChanged(sender As Object, id As Integer)

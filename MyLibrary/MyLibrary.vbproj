@@ -79,10 +79,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Company.vb" />
     <Compile Include="Classes\Credentials.vb" />
     <Compile Include="Classes\Database.vb" />
     <Compile Include="Classes\GeoLocation.vb" />
+    <Compile Include="Interfaces\ICompany.vb" />
+    <Compile Include="Classes\Person.vb" />
+    <Compile Include="Enumerations\AcceptedCharacters.vb" />
+    <Compile Include="Enumerations\AccountPlan.vb" />
+    <Compile Include="Enumerations\AccountType.vb" />
+    <Compile Include="Enumerations\SessionStatus.vb" />
     <Compile Include="Enumerations\ShaType.vb" />
+    <Compile Include="Enumerations\WindowType.vb" />
     <Compile Include="Interfaces\ICredentials.vb" />
     <Compile Include="Interfaces\IDatabase.vb" />
     <Compile Include="Classes\ServerRequest.vb" />
@@ -103,11 +111,12 @@
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Interfaces\IPerson.vb" />
     <Compile Include="Interfaces\IServerRequest.vb" />
     <Compile Include="Interfaces\IServerRequestHelper.vb" />
     <Compile Include="Interfaces\IUser.vb" />
     <Compile Include="Classes\User.vb" />
-    <Compile Include="Enumerations\Status.vb" />
+    <Compile Include="Enumerations\GeoLocationStatus.vb" />
     <Compile Include="Interfaces\IGeoLocation.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
