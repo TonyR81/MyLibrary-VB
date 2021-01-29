@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="Classes\Company.vb" />
     <Compile Include="Classes\Credentials.vb" />
+    <Compile Include="Classes\Customer.vb" />
     <Compile Include="Classes\Database.vb" />
     <Compile Include="Classes\Employee.vb" />
     <Compile Include="Classes\GeoLocation.vb" />
@@ -130,6 +131,7 @@
     <Compile Include="Enumerations\ShaType.vb" />
     <Compile Include="Enumerations\WindowType.vb" />
     <Compile Include="Interfaces\ICredentials.vb" />
+    <Compile Include="Interfaces\ICustomer.vb" />
     <Compile Include="Interfaces\IDatabase.vb" />
     <Compile Include="Classes\ServerRequest.vb" />
     <Compile Include="Dialogs\MessageSplash.designer.vb">
