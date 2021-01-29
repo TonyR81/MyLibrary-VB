@@ -86,6 +86,7 @@
     <Compile Include="Classes\Employee.vb" />
     <Compile Include="Classes\GeoLocation.vb" />
     <Compile Include="Classes\Language.vb" />
+    <Compile Include="Collections\CollectionBase.vb" />
     <Compile Include="Components\NumericUpDown\AmountNumericUpDown.designer.vb">
       <DependentUpon>AmountNumericUpDown.vb</DependentUpon>
     </Compile>
@@ -122,6 +123,7 @@
     </Compile>
     <Compile Include="Enumerations\ExceptionType.vb" />
     <Compile Include="Exceptions\NumericCharacterException.vb" />
+    <Compile Include="Interfaces\ICollectionBase.vb" />
     <Compile Include="Interfaces\ICompany.vb" />
     <Compile Include="Classes\Person.vb" />
     <Compile Include="Enumerations\AcceptedCharacters.vb" />
