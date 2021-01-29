@@ -7,10 +7,6 @@ Public Enum AccountType
     MAIN = 2
     USER = 3
     COMPANY = 4
-    COORDINATOR = 5
-    STORE = 6
-    OIL_COMPANY = 7
-    CONTRACTOR = 8
-    COMPETITOR = 9
-    MAINTENANCES_COMPANY = 10
+    EMPLOYEE = 5
+    CUSTOMER = 6
 End Enum

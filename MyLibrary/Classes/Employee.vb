@@ -31,6 +31,13 @@ Public Class Employee
 
 #Region "Subs"
 
+    ''' <summary>
+    ''' Initialize current employee class
+    ''' </summary>
+    Protected Friend Overrides Sub Initialize()
+        MyBase.Initialize()
+        AccountType = AccountType.EMPLOYEE
+    End Sub
 
 #End Region ' Fine Regions Subs
 
