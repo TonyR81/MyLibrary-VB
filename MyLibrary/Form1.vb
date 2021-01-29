@@ -7,10 +7,9 @@
             .Country = "Italy",
             .ZipCode = "90145"
         }
-
         Dim r = Await g.FindCoordinatesAsync()
         If r Then
-            MsgBox("Ok")
+            MyTextBox1.Text = g.Latitude
         End If
     End Sub
 End Class

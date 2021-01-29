@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<strings>
+  <baloons>
+    <show_password>Mostra password</show_password>
+    <hide_password>Nascondi password</hide_password>
+  </baloons>
+
+  <actions>
+    
+  </actions>
+
+  <character>
+    <font>Carattere</font>
+    <backcolor>Colore di sfondo</backcolor>
+    <accepted_character>Carattere consentito</accepted_character>
+    <max_length>Caratteri massimi</max_length>
+    <copy>Copia</copy>
+    <paste>Incolla</paste>
+    <primary>Colore di sfondo primario</primary>
+    <secondary>Colore di sfondo secondario</secondary>
+    <all>Tutti</all>
+    <alphabetics>Alfabetici</alphabetics>
+    <numerics>Numerici</numerics>
+    <alphanumerics>Alfanumerici</alphanumerics>
+    <symbolics>Simboli</symbolics>
+  </character>
+</strings>

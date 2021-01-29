@@ -15,10 +15,10 @@ Public Class User
 
 #Region "Private Declarations"
 
-    Private WithEvents mLocation As GeoLocation
+    Private WithEvents MLocation As GeoLocation
     Private mFiscalCode As String
     Private mPhone As String
-    Private WithEvents mCredentials As Credentials
+    Private WithEvents MCredentials As Credentials
     Private mRegistration As Date
     Private mSubscription As Date
     Private mNewsletters As Boolean
@@ -39,10 +39,10 @@ Public Class User
     ''' <returns>GeoLocation</returns>
     Public Property Location() As GeoLocation Implements IUser.Location
         Get
-            Return mLocation
+            Return MLocation
         End Get
         Set(ByVal value As GeoLocation)
-            mLocation = value
+            MLocation = value
         End Set
     End Property
 
@@ -80,10 +80,10 @@ Public Class User
     ''' <returns>Credentials</returns>
     Public Property Credentials() As Credentials
         Get
-            Return mCredentials
+            Return MCredentials
         End Get
         Set(ByVal value As Credentials)
-            mCredentials = value
+            MCredentials = value
         End Set
     End Property
 

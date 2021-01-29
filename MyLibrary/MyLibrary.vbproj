@@ -83,6 +83,43 @@
     <Compile Include="Classes\Credentials.vb" />
     <Compile Include="Classes\Database.vb" />
     <Compile Include="Classes\GeoLocation.vb" />
+    <Compile Include="Classes\Language.vb" />
+    <Compile Include="Components\NumericUpDown\AmountNumericUpDown.designer.vb">
+      <DependentUpon>AmountNumericUpDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\NumericUpDown\AmountNumericUpDown.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\RadioButtons\ToolStripRadioButtonMenuItem.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Textbox\MyPassword.designer.vb">
+      <DependentUpon>MyPassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Textbox\MyPassword.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Textbox\MyTextBox.designer.vb">
+      <DependentUpon>MyTextBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Textbox\MyTextBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Enumerations\Visibility.vb" />
+    <Compile Include="Dialogs\MyColorDialog.designer.vb">
+      <DependentUpon>MyColorDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\MyColorDialog.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dialogs\MyFontDialog.designer.vb">
+      <DependentUpon>MyFontDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\MyFontDialog.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Enumerations\ExceptionType.vb" />
+    <Compile Include="Exceptions\NumericCharacterException.vb" />
     <Compile Include="Interfaces\ICompany.vb" />
     <Compile Include="Classes\Person.vb" />
     <Compile Include="Enumerations\AcceptedCharacters.vb" />
@@ -111,6 +148,7 @@
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Interfaces\ILanguage.vb" />
     <Compile Include="Interfaces\IPerson.vb" />
     <Compile Include="Interfaces\IServerRequest.vb" />
     <Compile Include="Interfaces\IServerRequestHelper.vb" />
@@ -136,6 +174,15 @@
     <Compile Include="Modules\Utility.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Components\NumericUpDown\AmountNumericUpDown.resx">
+      <DependentUpon>AmountNumericUpDown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Textbox\MyPassword.resx">
+      <DependentUpon>MyPassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Textbox\MyTextBox.resx">
+      <DependentUpon>MyTextBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\MessageSplash.resx">
       <DependentUpon>MessageSplash.vb</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +208,54 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Windows\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Utente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chiave-attivazione.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closed_eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\man_at_work.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\more_vert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\opened_eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\Languages\it.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

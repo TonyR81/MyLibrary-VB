@@ -5,5 +5,8 @@
     <Setting Name="MessageSplashTimer" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2000</Value>
     </Setting>
+    <Setting Name="Language" Type="System.String" Scope="User">
+      <Value Profile="(Default)">it</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
