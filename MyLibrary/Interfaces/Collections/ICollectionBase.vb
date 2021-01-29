@@ -18,7 +18,7 @@ Public Interface ICollectionBase
 
 #Region "Subs"
 
-    Sub AddRange(json As JObject)
+    Sub AddRange(array As JArray)
 
 #End Region ' Subs
 

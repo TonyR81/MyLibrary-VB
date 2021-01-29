@@ -87,6 +87,10 @@
     <Compile Include="Classes\GeoLocation.vb" />
     <Compile Include="Classes\Language.vb" />
     <Compile Include="Collections\CollectionBase.vb" />
+    <Compile Include="Collections\EmployeesCollection.vb" />
+    <Compile Include="Interfaces\Collections\IUsersCollection.vb" />
+    <Compile Include="Collections\PersonsCollection.vb" />
+    <Compile Include="Collections\UsersCollection.vb" />
     <Compile Include="Components\NumericUpDown\AmountNumericUpDown.designer.vb">
       <DependentUpon>AmountNumericUpDown.vb</DependentUpon>
     </Compile>
@@ -123,8 +127,8 @@
     </Compile>
     <Compile Include="Enumerations\ExceptionType.vb" />
     <Compile Include="Exceptions\NumericCharacterException.vb" />
-    <Compile Include="Interfaces\ICollectionBase.vb" />
-    <Compile Include="Interfaces\ICompany.vb" />
+    <Compile Include="Interfaces\Collections\ICollectionBase.vb" />
+    <Compile Include="Interfaces\Classes\ICompany.vb" />
     <Compile Include="Classes\Person.vb" />
     <Compile Include="Enumerations\AcceptedCharacters.vb" />
     <Compile Include="Enumerations\AccountPlan.vb" />
@@ -132,9 +136,9 @@
     <Compile Include="Enumerations\SessionStatus.vb" />
     <Compile Include="Enumerations\ShaType.vb" />
     <Compile Include="Enumerations\WindowType.vb" />
-    <Compile Include="Interfaces\ICredentials.vb" />
-    <Compile Include="Interfaces\ICustomer.vb" />
-    <Compile Include="Interfaces\IDatabase.vb" />
+    <Compile Include="Interfaces\Classes\ICredentials.vb" />
+    <Compile Include="Interfaces\Classes\ICustomer.vb" />
+    <Compile Include="Interfaces\Classes\IDatabase.vb" />
     <Compile Include="Classes\ServerRequest.vb" />
     <Compile Include="Dialogs\MessageSplash.designer.vb">
       <DependentUpon>MessageSplash.vb</DependentUpon>
@@ -153,15 +157,17 @@
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\IEmployee.vb" />
-    <Compile Include="Interfaces\ILanguage.vb" />
-    <Compile Include="Interfaces\IPerson.vb" />
-    <Compile Include="Interfaces\IServerRequest.vb" />
-    <Compile Include="Interfaces\IServerRequestHelper.vb" />
-    <Compile Include="Interfaces\IUser.vb" />
+    <Compile Include="Interfaces\Classes\IEmployee.vb" />
+    <Compile Include="Interfaces\Collections\IEmployeesCollection.vb" />
+    <Compile Include="Interfaces\Classes\ILanguage.vb" />
+    <Compile Include="Interfaces\Classes\IPerson.vb" />
+    <Compile Include="Interfaces\Collections\IPersonsCollection.vb" />
+    <Compile Include="Interfaces\Classes\IServerRequest.vb" />
+    <Compile Include="Interfaces\Classes\IServerRequestHelper.vb" />
+    <Compile Include="Interfaces\Classes\IUser.vb" />
     <Compile Include="Classes\User.vb" />
     <Compile Include="Enumerations\GeoLocationStatus.vb" />
-    <Compile Include="Interfaces\IGeoLocation.vb" />
+    <Compile Include="Interfaces\Classes\IGeoLocation.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

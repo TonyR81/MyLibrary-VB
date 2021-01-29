@@ -53,9 +53,10 @@ Public MustInherit Class CollectionBase
     ''' Creates a new instance of CollectionBase class given a json object that contains 
     ''' items in json object format
     ''' </summary>
-    ''' <param name="json">JObject</param>
-    Public Sub New(json As JObject)
-        AddRange(json)
+    ''' <param name="array">JArray</param>
+    ''' <see cref="JArray"/>
+    Public Sub New(array As JArray)
+        AddRange(array)
     End Sub
 
 #End Region ' End Constructors
@@ -78,7 +79,7 @@ Public MustInherit Class CollectionBase
     ''' Add specified range of items given in json object format
     ''' </summary>
     ''' <param name="json">JObject</param>
-    Public MustOverride Sub AddRange(json As JObject) Implements ICollectionBase.AddRange
+    Public MustOverride Sub AddRange(array As JArray) Implements ICollectionBase.AddRange
 
 #End Region ' Fine Regions Subs
 
