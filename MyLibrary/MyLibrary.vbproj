@@ -87,6 +87,7 @@
     <Compile Include="Classes\GeoLocation.vb" />
     <Compile Include="Classes\Language.vb" />
     <Compile Include="Collections\CollectionBase.vb" />
+    <Compile Include="Collections\CompaniesCollection.vb" />
     <Compile Include="Collections\EmployeesCollection.vb" />
     <Compile Include="Interfaces\Collections\IUsersCollection.vb" />
     <Compile Include="Collections\PersonsCollection.vb" />
@@ -168,6 +169,7 @@
     <Compile Include="Classes\User.vb" />
     <Compile Include="Enumerations\GeoLocationStatus.vb" />
     <Compile Include="Interfaces\Classes\IGeoLocation.vb" />
+    <Compile Include="Interfaces\ICompaniesCollection.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
