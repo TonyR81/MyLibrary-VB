@@ -78,7 +78,7 @@ Public MustInherit Class CollectionBase
     ''' <summary>
     ''' Add specified range of items given in json object format
     ''' </summary>
-    ''' <param name="json">JObject</param>
+    ''' <param name="array">JArray</param>
     Public MustOverride Sub AddRange(array As JArray) Implements ICollectionBase.AddRange
 
 #End Region ' Fine Regions Subs
