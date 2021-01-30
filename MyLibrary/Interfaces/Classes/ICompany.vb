@@ -1,4 +1,5 @@
-﻿''' <summary>
+﻿Imports MyLibrary
+''' <summary>
 ''' Company interface
 ''' <para>Created by Antonino Razeti on January 28, 2021</para>
 ''' <para>Version 1.0</para>
@@ -13,6 +14,7 @@ Public Interface ICompany
     Property BusinessName As String
     Property VatNumber As String
     Property Website As String
+    Property Employees As EmployeesCollection
 
 #End Region ' End Properties
 
@@ -22,6 +24,7 @@ Public Interface ICompany
     Event BusinessNameChanged(sender As Object, businessName As String)
     Event VatNumberChanged(sender As Object, vatNumber As String)
     Event WebsiteChanged(sender As Object, website As String)
+    Event EmployeesChanged(sender As Object, employees As EmployeesCollection)
 
 #End Region ' Fine Events
 

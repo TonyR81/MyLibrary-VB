@@ -42,6 +42,18 @@ Public Class EmployeesCollection
 
 #Region "Functions"
 
+    ''' <summary>
+    ''' Returns current collection as an array of items in json object format
+    ''' </summary>
+    ''' <returns>JArray</returns>
+    ''' <see cref="JArray"/>
+    Public Overrides Function ToJson() As JArray
+        Dim array As JArray = New JArray
+        For index = 0 To Items.Count - 1
+            array.Add(CType(Items(index), Employee).ToJson)
+        Next
+        Return array
+    End Function
 
 #End Region ' Fine Regione Functions
 

@@ -16,6 +16,12 @@ Public Interface ICollectionBase
 
 #End Region ' End Getters and Setters
 
+#Region "Functions"
+
+    Function ToJson() As JArray
+
+#End Region ' End Functions
+
 #Region "Subs"
 
     Sub AddRange(array As JArray)

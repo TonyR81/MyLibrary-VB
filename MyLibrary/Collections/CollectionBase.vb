@@ -63,6 +63,11 @@ Public MustInherit Class CollectionBase
 
 #Region "Functions"
 
+    ''' <summary>
+    ''' Returns current collection as an array of items in json object format
+    ''' </summary>
+    ''' <returns>JArray</returns>
+    Public MustOverride Function ToJson() As JArray Implements ICollectionBase.ToJson
 
 #End Region ' Fine Regione Functions
 

@@ -18,6 +18,7 @@ Public Class Company
     Private mBusinessName As String
     Private mVatNumber As String
     Private mWebsite As String
+    Private WithEvents mEmployees As EmployeesCollection
 
 #End Region ' Fine Regions Private Declarations	
 
@@ -80,6 +81,21 @@ Public Class Company
         Set(ByVal value As String)
             mWebsite = value
             RaiseEvent WebsiteChanged(Me, value)
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' Gets or sets the employees collection of current company
+    ''' </summary>
+    ''' <returns>EmployeesCollection</returns>
+    <DefaultValue(""), Category("Properties")>
+    Public Property Employees() As EmployeesCollection Implements ICompany.Employees
+        Get
+            Return mEmployees
+        End Get
+        Set(ByVal value As EmployeesCollection)
+            mEmployees = value
+            RaiseEvent EmployeesChanged(Me, value)
         End Set
     End Property
 
@@ -190,6 +206,7 @@ Public Class Company
         VatNumber = ""
         Website = ""
         AccountType = AccountType.COMPANY
+        Employees = New EmployeesCollection
     End Sub
 
     ''' <summary>
@@ -205,6 +222,9 @@ Public Class Company
                 BusinessName = If(Not IsNothing(.SelectToken("business_name")), .SelectToken("business_name"), "")
                 VatNumber = If(Not IsNothing(.SelectToken("vat_number")), .SelectToken("vat_number"), "")
                 Website = If(Not IsNothing(.SelectToken("website")), .SelectToken("website"), "")
+                If Not IsNothing(.SelectToken("employees")) Then
+                    Employees = New EmployeesCollection(.SelectToken("employees"))
+                End If
             End With
         End If
     End Sub
@@ -217,6 +237,7 @@ Public Class Company
     Public Event BusinessNameChanged(ByVal sender As Object, ByVal businessName As String) Implements ICompany.BusinessNameChanged
     Public Event VatNumberChanged(ByVal sender As Object, ByVal vatNumber As String) Implements ICompany.VatNumberChanged
     Public Event WebsiteChanged(ByVal sender As Object, ByVal website As String) Implements ICompany.WebsiteChanged
+    Public Event EmployeesChanged(ByVal sender As Object, ByVal employees As EmployeesCollection) Implements ICompany.EmployeesChanged
 
 #End Region ' Fine Events
 

@@ -22,11 +22,38 @@ Public Class CompaniesCollection
 
 #Region "Constructors"
 
+    ''' <summary>
+    ''' Creates a new empty instance of Companies collection class
+    ''' </summary>
+    Public Sub New()
+    End Sub
+
+    ''' <summary>
+    ''' Creates a new instance of Companies Collection class given a json array that contains 
+    ''' items in json object format
+    ''' </summary>
+    ''' <param name="array">JArray</param>
+    ''' <see cref="JObject"/>
+    Public Sub New(array As JArray)
+        MyBase.New(array)
+    End Sub
 
 #End Region ' End Constructors
 
 #Region "Functions"
 
+    ''' <summary>
+    ''' Returns current collection as an array of items in json object format
+    ''' </summary>
+    ''' <returns>JArray</returns>
+    Public Overrides Function ToJson() As JArray
+        Dim array As JArray = New JArray
+        For index = 0 To Items.Count - 1
+            Dim json As JObject = Items(index).ToJson
+            array.Add(CType(Items(index), Company).ToJson)
+        Next
+        Return array
+    End Function
 
 #End Region ' Fine Regione Functions
 

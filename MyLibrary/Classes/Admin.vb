@@ -84,6 +84,18 @@ Public Class Admin
 
 #Region "Functions"
 
+    ''' <summary>
+    ''' Returns a json object format that represents current admin
+    ''' </summary>
+    ''' <returns>JObject</returns>
+    ''' <see cref="JObject"/>
+    Public Overrides Function ToJson() As JObject
+        Dim json As JObject = MyBase.ToJson()
+        If Not IsNothing(Companies) Then
+            json.Add("companies", Companies.ToJson())
+        End If
+        Return json
+    End Function
 
 #End Region ' Fine Regione Functions
 
@@ -95,6 +107,19 @@ Public Class Admin
     Protected Friend Overrides Sub Initialize()
         MyBase.Initialize()
         AccountType = AccountType.ADMIN
+        Companies = New CompaniesCollection
+    End Sub
+
+    ''' <summary>
+    ''' Sets current admin properties given specified json object that contains current admin properties information
+    ''' </summary>
+    ''' <param name="json">JObject</param>
+    ''' <see cref="JObject"/>
+    Public Overrides Sub FromJson(json As JObject)
+        MyBase.FromJson(json)
+        If Not IsNothing(json) AndAlso Not IsNothing(json.SelectToken("companies")) Then
+            Companies = New CompaniesCollection(json.SelectToken("companies"))
+        End If
     End Sub
 
 #End Region ' Fine Regions Subs
