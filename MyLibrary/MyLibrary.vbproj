@@ -79,12 +79,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Admin.vb" />
     <Compile Include="Classes\Company.vb" />
     <Compile Include="Classes\Credentials.vb" />
     <Compile Include="Classes\Customer.vb" />
     <Compile Include="Classes\Database.vb" />
     <Compile Include="Classes\Employee.vb" />
     <Compile Include="Classes\GeoLocation.vb" />
+    <Compile Include="Interfaces\Classes\IAdmin.vb" />
     <Compile Include="Classes\Language.vb" />
     <Compile Include="Collections\CollectionBase.vb" />
     <Compile Include="Collections\CompaniesCollection.vb" />
@@ -169,7 +171,7 @@
     <Compile Include="Classes\User.vb" />
     <Compile Include="Enumerations\GeoLocationStatus.vb" />
     <Compile Include="Interfaces\Classes\IGeoLocation.vb" />
-    <Compile Include="Interfaces\ICompaniesCollection.vb" />
+    <Compile Include="Interfaces\Collections\ICompaniesCollection.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
