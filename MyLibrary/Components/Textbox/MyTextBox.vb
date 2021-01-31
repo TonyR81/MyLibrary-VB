@@ -13,6 +13,13 @@ Public Class MyTextBox
     Private mFillBackColor As Color
     Private mLanguage As Language
     Private mMenuEnabled As Boolean
+    Private Delegate Sub OnBlinkDelegate()
+    Private OnBlink As New OnBlinkDelegate(AddressOf Blink)
+
+    Friend WithEvents BlinkTimer As Timer
+    Private blinkCounter As Integer = 0
+    Private BlinkPrimaryColor As Color = Color.Red
+    Private BlinkSecondaryColor As Color = Color.White
 
 #End Region ' Fine Regione Dichiarazioni Private
 
@@ -205,6 +212,13 @@ Public Class MyTextBox
         End With
     End Sub
 
+    ''' <summary>
+    ''' Blink current textbox
+    ''' </summary>
+    Private Sub Blink()
+
+    End Sub
+
 #End Region ' Fine Regione Subs
 
 #Region "Menu"
@@ -281,6 +295,25 @@ Public Class MyTextBox
         If c.ShowDialog = DialogResult.OK Then
             Me.FillBackColor = c.Color
         End If
+    End Sub
+
+
+    Private Sub BlinkTimer_Tick(sender As Object, e As EventArgs) Handles BlinkTimer.Tick
+        BackColor = If(BackColor = BlinkPrimaryColor, BlinkSecondaryColor, BlinkPrimaryColor)
+        blinkCounter += 1
+        If blinkCounter = 10 Then
+            blinkCounter = 0
+            BlinkTimer.Stop()
+            BlinkTimer.Enabled = False
+            BlinkTimer.Dispose()
+            BackColor = If(String.IsNullOrEmpty(Text), EmptyBackColor, FillBackColor)
+        End If
+    End Sub
+
+    Public Sub StartBlink()
+        BlinkTimer = New Timer() With {.Interval = 400, .Enabled = True}
+        BackColor = BlinkSecondaryColor
+        BlinkTimer.Start()
     End Sub
 
 #End Region ' Fine Regione Menu

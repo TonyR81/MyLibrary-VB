@@ -353,8 +353,8 @@ Module Utility
     ''' Creates a splash message
     ''' </summary>
     ''' <param name="message">String</param>
-    Public Sub MyMessage(message As String, Optional type As MsgBoxStyle = Nothing)
-        Dim msg As New MessageSplash(message, type)
+    Public Sub MyMessage(message As String, Optional type As MsgBoxStyle = Nothing, Optional displayMode As MessageSplash.DisplayMode = MessageSplash.DisplayMode.NORMAL)
+        Dim msg As New MessageSplash(message, type, displayMode)
         msg.Show()
     End Sub
 

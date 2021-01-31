@@ -326,6 +326,16 @@ Public Class User
         Me.IsVerified = isVerified
     End Sub
 
+    ''' <summary>
+    ''' Creates a new instance of User class given username and password to login
+    ''' </summary>
+    ''' <param name="username">String</param>
+    ''' <param name="password">String</param>
+    Public Sub New(username As String, password As String)
+        Me.Username = username
+        Me.Password = password
+    End Sub
+
 #End Region ' End Constructors
 
 #Region "Functions"

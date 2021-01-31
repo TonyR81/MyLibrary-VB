@@ -8,6 +8,14 @@
 ''' </summary>
 Public Class MessageSplash
 
+#Region "Enumeration"
+
+    Public Enum DisplayMode
+        NORMAL = 0
+        TOAST = 1
+    End Enum
+
+#End Region ' End Enumeration
 
 #Region "Private Declarations"
 
@@ -44,11 +52,15 @@ Public Class MessageSplash
     ''' Creates a new instance of Message splash form class given message
     ''' </summary>
     ''' <param name="message">String</param>
-    Public Sub New(message As String, Optional type As MsgBoxStyle = MsgBoxStyle.Critical)
+    Public Sub New(message As String, Optional type As MsgBoxStyle = MsgBoxStyle.Critical, Optional displayMode As DisplayMode = DisplayMode.NORMAL)
         InitializeComponent()
-        Me.MessageLabel.Text = message
-        Me.Text = My.Application.Info.ProductName
+        MessageLabel.Text = message
+        Text = My.Application.Info.ProductName
         Me.Type = type
+        FormBorderStyle = If(displayMode = DisplayMode.NORMAL, FormBorderStyle.Sizable, FormBorderStyle.None)
+        BackColor = If(displayMode = DisplayMode.NORMAL, Drawing.SystemColors.Control, Drawing.SystemColors.ControlDark)
+        ForeColor = If(displayMode = DisplayMode.NORMAL, ForeColor, Drawing.Color.White)
+        Region = BorderRadius(Size)
     End Sub
 
 #End Region ' End Constructors

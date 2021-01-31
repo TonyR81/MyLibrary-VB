@@ -44,12 +44,13 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>MyLibrary.Form1</StartupObject>
+    <StartupObject>MyLibrary.LoginFormModern</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MessagingToolkit.QRCode">
       <HintPath>D:\Programmi\MessagingToolkit.QRCode.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -86,6 +87,24 @@
     <Compile Include="Classes\Database.vb" />
     <Compile Include="Classes\Employee.vb" />
     <Compile Include="Classes\GeoLocation.vb" />
+    <Compile Include="Components\Buttons\MyButton.Designer.vb">
+      <DependentUpon>MyButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Buttons\MyButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Switch\MySwitch.designer.vb">
+      <DependentUpon>MySwitch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Switch\MySwitch.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Switch\Switch.designer.vb">
+      <DependentUpon>Switch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Switch\Switch.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Interfaces\Classes\IAdmin.vb" />
     <Compile Include="Classes\Language.vb" />
     <Compile Include="Collections\CollectionBase.vb" />
@@ -188,10 +207,31 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Modules\Utility.vb" />
+    <Compile Include="Windows\Login\LoginFormClassic.Designer.vb">
+      <DependentUpon>LoginFormClassic.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Login\LoginFormClassic.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Login\LoginFormModern.Designer.vb">
+      <DependentUpon>LoginFormModern.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Login\LoginFormModern.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Components\Buttons\MyButton.resx">
+      <DependentUpon>MyButton.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\NumericUpDown\AmountNumericUpDown.resx">
       <DependentUpon>AmountNumericUpDown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Switch\MySwitch.resx">
+      <DependentUpon>MySwitch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Switch\Switch.resx">
+      <DependentUpon>Switch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Textbox\MyPassword.resx">
       <DependentUpon>MyPassword.vb</DependentUpon>
@@ -211,6 +251,12 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Login\LoginFormClassic.resx">
+      <DependentUpon>LoginFormClassic.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Login\LoginFormModern.resx">
+      <DependentUpon>LoginFormModern.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -225,9 +271,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\search.png" />
   </ItemGroup>
