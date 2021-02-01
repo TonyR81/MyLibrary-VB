@@ -45,7 +45,7 @@ Partial Class MySwitch
         Me.MainContainer.Name = "MainContainer"
         Me.MainContainer.RowCount = 1
         Me.MainContainer.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.MainContainer.Size = New System.Drawing.Size(150, 150)
+        Me.MainContainer.Size = New System.Drawing.Size(145, 52)
         Me.MainContainer.TabIndex = 0
         '
         'Switch
@@ -57,7 +57,7 @@ Partial Class MySwitch
         Me.Switch.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Switch.Location = New System.Drawing.Point(3, 3)
         Me.Switch.Name = "Switch"
-        Me.Switch.Size = New System.Drawing.Size(52, 144)
+        Me.Switch.Size = New System.Drawing.Size(52, 46)
         Me.Switch.TabIndex = 0
         '
         'LabelText
@@ -68,7 +68,7 @@ Partial Class MySwitch
         Me.LabelText.AutoSize = True
         Me.LabelText.Location = New System.Drawing.Point(61, 0)
         Me.LabelText.Name = "LabelText"
-        Me.LabelText.Size = New System.Drawing.Size(86, 150)
+        Me.LabelText.Size = New System.Drawing.Size(81, 52)
         Me.LabelText.TabIndex = 1
         Me.LabelText.Text = "Text"
         Me.LabelText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -81,6 +81,7 @@ Partial Class MySwitch
         Me.Controls.Add(Me.MainContainer)
         Me.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Name = "MySwitch"
+        Me.Size = New System.Drawing.Size(145, 52)
         Me.MainContainer.ResumeLayout(False)
         Me.MainContainer.PerformLayout()
         Me.ResumeLayout(False)

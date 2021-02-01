@@ -85,8 +85,15 @@
     <Compile Include="Classes\Credentials.vb" />
     <Compile Include="Classes\Customer.vb" />
     <Compile Include="Classes\Database.vb" />
+    <Compile Include="Classes\DatabaseHelper.vb" />
     <Compile Include="Classes\Employee.vb" />
     <Compile Include="Classes\GeoLocation.vb" />
+    <Compile Include="Components\Buttons\CloseButton.Designer.vb">
+      <DependentUpon>CloseButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Buttons\CloseButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\Buttons\MyButton.Designer.vb">
       <DependentUpon>MyButton.vb</DependentUpon>
     </Compile>
@@ -105,11 +112,25 @@
     <Compile Include="Components\Switch\Switch.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Components\Toolbar\Toolbar.designer.vb">
+      <DependentUpon>Toolbar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Toolbar\Toolbar.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Toolbar\ToolbarButton.designer.vb">
+      <DependentUpon>ToolbarButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Toolbar\ToolbarButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Exceptions\ServerConnectionException.vb" />
     <Compile Include="Interfaces\Classes\IAdmin.vb" />
     <Compile Include="Classes\Language.vb" />
     <Compile Include="Collections\CollectionBase.vb" />
     <Compile Include="Collections\CompaniesCollection.vb" />
     <Compile Include="Collections\EmployeesCollection.vb" />
+    <Compile Include="Interfaces\Classes\ITranslatable.vb" />
     <Compile Include="Interfaces\Collections\IUsersCollection.vb" />
     <Compile Include="Collections\PersonsCollection.vb" />
     <Compile Include="Collections\UsersCollection.vb" />
@@ -207,6 +228,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Modules\Utility.vb" />
+    <Compile Include="Windows\FormBase.Designer.vb">
+      <DependentUpon>FormBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FormBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Windows\Login\LoginFormClassic.Designer.vb">
       <DependentUpon>LoginFormClassic.vb</DependentUpon>
     </Compile>
@@ -219,8 +246,18 @@
     <Compile Include="Windows\Login\LoginFormModern.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Exceptions\WrongCredentialsException.vb" />
+    <Compile Include="Windows\Main\ModernMain.Designer.vb">
+      <DependentUpon>ModernMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Main\ModernMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Components\Buttons\CloseButton.resx">
+      <DependentUpon>CloseButton.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\Buttons\MyButton.resx">
       <DependentUpon>MyButton.vb</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +276,12 @@
     <EmbeddedResource Include="Components\Textbox\MyTextBox.resx">
       <DependentUpon>MyTextBox.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\Toolbar\Toolbar.resx">
+      <DependentUpon>Toolbar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Toolbar\ToolbarButton.resx">
+      <DependentUpon>ToolbarButton.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\MessageSplash.resx">
       <DependentUpon>MessageSplash.vb</DependentUpon>
     </EmbeddedResource>
@@ -251,11 +294,17 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\FormBase.resx">
+      <DependentUpon>FormBase.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Login\LoginFormClassic.resx">
       <DependentUpon>LoginFormClassic.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Login\LoginFormModern.resx">
       <DependentUpon>LoginFormModern.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Main\ModernMain.resx">
+      <DependentUpon>ModernMain.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +365,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Files\Languages\it.xml" />
+    <None Include="Resources\normalize.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

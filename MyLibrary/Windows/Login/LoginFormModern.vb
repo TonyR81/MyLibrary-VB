@@ -1,22 +1,7 @@
-﻿Imports System.Windows.Forms
+﻿Imports MyLibrary.Windows.Login
 Imports Newtonsoft.Json.Linq
 
 Public Class LoginFormModern
-
-#Region "Private Declarations"
-
-
-#End Region ' Fine Regions Private Declarations	
-
-#Region "Getters and Setters"
-
-
-#End Region ' End Properties
-
-#Region "Constructors"
-
-
-#End Region ' End Constructors
 
 #Region "Functions"
 
@@ -25,8 +10,36 @@ Public Class LoginFormModern
 
 #Region "Subs"
 
+    ''' <summary>
+    ''' Login
+    ''' </summary>
     Private Sub Login()
+        Dim user As New User(TxtUsername.Text, TxtPassword.Text)
+        Dim json As JObject = New ServerRequest("login").GetResponse(user.ToPost)
+        If Not IsNothing(json) Then
+            Dim response As Boolean = json.SelectToken("response")
+            Try
 
+            Catch ex As WrongCredentialsException
+                Dim message As New MessageSplash(ex.Message, MsgBoxStyle.Critical, MessageSplash.DisplayMode.TOAST)
+                message.Show()
+                TxtUsername.SelectAll()
+            End Try
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Translate current form
+    ''' </summary>
+    Protected Overrides Sub Translate()
+        MyBase.Translate()
+        With Language
+            LabelUsername.Text = .GetString("user", "username")
+            LabelPassword.Text = .GetString("user", "password")
+            BtnLogin.Text = .GetString("actions", "login")
+            LabelRemeber.Text = .GetString("actions", "stay_connected")
+            LinkRegister.Text = .GetString("actions", "create_account")
+        End With
     End Sub
 
 #End Region ' Fine Regions Subs
@@ -58,9 +71,6 @@ Public Class LoginFormModern
         End Try
     End Sub
 
-
 #End Region ' Fine Events
-
-
 
 End Class

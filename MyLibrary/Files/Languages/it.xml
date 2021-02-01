@@ -6,7 +6,11 @@
   </baloons>
 
   <actions>
-    
+    <create_account>Crea un account</create_account>
+    <login>Accedi</login>
+    <register>Registrati</register>
+    <remember_me>Ricorda</remember_me>
+    <stay_connected>Resta connesso</stay_connected>
   </actions>
 
   <character>
@@ -24,4 +28,16 @@
     <alphanumerics>Alfanumerici</alphanumerics>
     <symbolics>Simboli</symbolics>
   </character>
+
+  <user>
+    <phone>Cellulare</phone>
+    <fiscal_code>Codice fiscale</fiscal_code>
+    <username>Nome utente</username>
+    <password>Password</password>
+    <registration_day>Registrazione</registration_day>
+    <subscription>Sottoscrizione</subscription>
+    <account_type>Tipo di account</account_type>
+    <account_plan>Piano</account_plan>
+    <referral_code>Codice di riferimento</referral_code>
+  </user>
 </strings>
