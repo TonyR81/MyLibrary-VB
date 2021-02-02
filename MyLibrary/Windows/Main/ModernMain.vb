@@ -36,6 +36,15 @@ Public Class ModernMain
         End Select
     End Sub
 
+    ''' <summary>
+    ''' Creates a new instance of ModernMain class given the user
+    ''' </summary>
+    ''' <param name="aUser">User</param>
+    Public Sub New(aUser As User)
+        InitializeComponent()
+        User = aUser
+    End Sub
+
 #End Region ' End Constructors
 
 #Region "Functions"

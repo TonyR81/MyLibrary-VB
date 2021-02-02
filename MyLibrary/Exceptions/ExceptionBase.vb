@@ -1,5 +1,4 @@
-﻿Imports System.Runtime.Serialization
-''' <summary>
+﻿''' <summary>
 ''' ExceptionBase class
 ''' <para>Created by Antonino Razeti on January 26, 2021</para>
 ''' <para>Version 1.0</para>
@@ -58,6 +57,51 @@ Public MustInherit Class ExceptionBase
     Public Sub New()
         Language = New Language(My.Settings.Language)
     End Sub
+
+    ''' <summary>
+    ''' Returns the exception class given the exception type value
+    ''' </summary>
+    ''' <param name="exceptionType">ExceptionType</param>
+    ''' <returns>ExceptionBase</returns>
+    Friend Shared Function GetException(exceptionType As ExceptionType) As ExceptionBase
+        Select Case exceptionType
+            Case ExceptionType.INTERNET_CONNECTION
+                Return New InternetConnectionException
+            Case ExceptionType.SERVER_CONNECTION
+                Return New ServerConnectionException
+            Case ExceptionType.WRONG_CREDENTIALS
+                Return New WrongCredentialsException
+            Case ExceptionType.UNVERIFIED_USER
+                Return New UnverifiedUserException
+            Case ExceptionType.SAVING_DATA
+                Exit Select
+            Case ExceptionType.UPDATING_DATA
+                Exit Select
+            Case ExceptionType.DELETING_DATA
+                Exit Select
+            Case ExceptionType.USERNAME_USED
+                Exit Select
+            Case ExceptionType.EMAIL_USED
+                Exit Select
+            Case ExceptionType.PHONE_USED
+                Exit Select
+            Case ExceptionType.HOMONYMY
+                Exit Select
+            Case ExceptionType.ALPHABETIC_EXCEPTION
+                Exit Select
+            Case ExceptionType.NUMERIC_EXCEPTION
+                Exit Select
+            Case ExceptionType.ALPHANUMERIC_EXCEPTION
+                Exit Select
+            Case ExceptionType.SYMBOLIC_EXCEPTION
+                Exit Select
+            Case ExceptionType.LENGHT_CHARACTER_EXCEPTION
+                Exit Select
+            Case ExceptionType.PLACE_ALREADY_EXISTS
+                Exit Select
+        End Select
+        Return Nothing
+    End Function
 
 #End Region ' End Constructors
 

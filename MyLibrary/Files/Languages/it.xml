@@ -40,4 +40,17 @@
     <account_plan>Piano</account_plan>
     <referral_code>Codice di riferimento</referral_code>
   </user>
+
+  <exceptions>
+    <unverified_user>Utente non verificato</unverified_user>
+    <internet_connection>Nessuna connessione internet</internet_connection>
+    <server_connection>Impossibile stabilire una connessione al server</server_connection>
+    <wrong_credentials>Nome utente o password errate</wrong_credentials>
+    <saving_data>Errore durante la memorizzazione dei dati</saving_data>
+    <updating_data>Errore durante l'aggiornamento dei dati</updating_data>
+    <deleting_data>Errore durante la cancellazione dei dati</deleting_data>
+    <username_used>Nome utente già in uso</username_used>
+    <email_used>Email già in uso</email_used>
+    <phone_used>Numero di telefono già in uso</phone_used>
+  </exceptions>
 </strings>

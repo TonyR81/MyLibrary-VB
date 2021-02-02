@@ -10,11 +10,21 @@ Public Class DatabaseHelper
 
 #Region "Private Declarations"
 
+    Private mResponse As JObject
 
 #End Region ' Fine Regions Private Declarations	
 
 #Region "Getters and Setters"
 
+    ''' <summary>
+    ''' Gets the response of the database request
+    ''' </summary>
+    ''' <returns>JObject</returns>
+    Public ReadOnly Property Response As JObject
+        Get
+            Return mResponse
+        End Get
+    End Property
 
 #End Region ' End Properties
 
@@ -37,19 +47,16 @@ Public Class DatabaseHelper
     ''' <param name="user">User</param>
     ''' <returns>JObject</returns>
     Public Function Login(ByRef user As User) As Boolean
-        Dim res As Boolean
         Try
-            If CheckInternetConnection() Then
-                res = LoginFromServer(user)
-
-            Else
-                ' TODO Effettuare login dal database locale
-            End If
+            Return LoginFromServer(user)
         Catch server As ServerConnectionException
-
+            Return LoginFromLocal(user)
         Catch internet As InternetConnectionException
-
+            Return LoginFromLocal(user)
+        Catch unverified As UnverifiedUserException
+            Throw unverified
         End Try
+        Return False
     End Function
 
     ''' <summary>
@@ -58,16 +65,35 @@ Public Class DatabaseHelper
     ''' <param name="user">User</param>
     ''' <returns>JObject</returns>
     Private Function LoginFromServer(user As User) As Boolean
-        Dim json As JObject = New ServerRequest("login").GetResponse(user.ToPost)
+        Dim json As JObject = New ServerRequest("login").GetResponse(JsonToPost("user", user.ToJson))
         If Not IsNothing(json) Then
-
+            If Not IsNothing(json.SelectToken("response")) Then
+                Dim response As Boolean = json.SelectToken("response")
+                If response Then
+                    mResponse = json
+                    Return response
+                Else
+                    If Not IsNothing(json.SelectToken("exception")) Then
+                        Throw ExceptionBase.GetException(Integer.Parse(json.SelectToken("exception")))
+                    Else
+                        Throw New WrongCredentialsException
+                    End If
+                End If
+            Else
+                Throw New ServerConnectionException
+            End If
         Else
             Throw New ServerConnectionException
         End If
     End Function
 
-    Private Function LoginFromLocal(user As User) As JObject
-
+    ''' <summary>
+    ''' Login of specified user from local database
+    ''' </summary>
+    ''' <param name="user">User</param>
+    ''' <returns>Boolean</returns>
+    Private Function LoginFromLocal(user As User) As Boolean
+        Return False
     End Function
 
 #End Region ' Fine Regione Functions

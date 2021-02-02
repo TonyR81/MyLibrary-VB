@@ -9,7 +9,7 @@
     <RootNamespace>MyLibrary</RootNamespace>
     <AssemblyName>MyLibrary</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -44,7 +44,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>MyLibrary.LoginFormModern</StartupObject>
+    <StartupObject>MyLibrary.My.MyApplication</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MessagingToolkit.QRCode">
@@ -125,6 +125,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Exceptions\ServerConnectionException.vb" />
+    <Compile Include="Exceptions\UnverifiedUserException.vb" />
     <Compile Include="Interfaces\Classes\IAdmin.vb" />
     <Compile Include="Classes\Language.vb" />
     <Compile Include="Collections\CollectionBase.vb" />

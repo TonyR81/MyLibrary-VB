@@ -117,7 +117,7 @@ Public Class User
             If IsNothing(Credentials) Then
                 Credentials = New Credentials
             End If
-            Credentials.Username = Username
+            Credentials.Username = value
         End Set
     End Property
 
@@ -351,6 +351,9 @@ Public Class User
         json.Add("phone", Phone)
         json.Add("fiscal_code", FiscalCode)
         json.Add("credentials", Credentials.ToJson)
+        json.Add("email", Email)
+        json.Add("username", Username)
+        json.Add("password", Password)
         json.Add("registration", Utility.DateToShortString(Registration))
         json.Add("subscription", If(IsNothing(Subscription) OrElse Date.Compare(Subscription, New Date(1, 1, 1)), "null", Utility.DateToShortString(Subscription)))
         json.Add("newsletters", If(Newsletters, 1, 0))
@@ -381,9 +384,9 @@ Public Class User
             Append(String.Format("longitude={0}&", If(Not IsNothing(Location), Location.Longitude, ""))).
             Append(String.Format("fiscal_code={0}&", FiscalCode)).
             Append(String.Format("phone={0}&", Phone)).
-            Append(String.Format("email={0}&", If(Not IsNothing(Credentials), Credentials.Email, ""))).
-            Append(String.Format("username={0}&", If(Not IsNothing(Credentials), Credentials.Username, ""))).
-            Append(String.Format("password={0}&", If(Not IsNothing(Credentials), Credentials.Password, ""))).
+            Append(String.Format("email={0}&", Email)).
+            Append(String.Format("username={0}&", Username)).
+            Append(String.Format("password={0}&", Password)).
             Append(String.Format("registration={0}&", DateToShortString(Registration))).
             Append(String.Format("subscription={0}&", If(IsNothing(Subscription) OrElse Date.Compare(Subscription, New Date(1, 1, 1)), "null", DateToShortString(Subscription)))).
             Append(String.Format("newsletters={0}&", If(Newsletters, 1, 0))).
@@ -443,13 +446,13 @@ Public Class User
             Registration = If(Not IsNothing(.SelectToken("registration")), StringToShortDate(.SelectToken("registration")), New Date())
             Dim s As String = If(Not IsNothing(.SelectToken("subscription")), .SelectToken("subscription"), "")
             Subscription = If(Not String.IsNullOrEmpty(s) AndAlso Not s.Equals("null"), StringToShortDate("subscription"), Nothing)
-            Newsletters = If(Not IsNothing(.SelectToken("newsletters")), .SelectToken("newsletters").Equals(1), False)
-            AccountType = If(Not IsNothing(.SelectToken("account_type")), Integer.Parse(.SelectToken("account_type")), 0)
-            AccountPlan = If(Not IsNothing(.SelectToken("account_plan")), Integer.Parse(.SelectToken("account_plan")), 0)
-            SessionStatus = If(Not IsNothing(.SelectToken("session_status")), Integer.Parse(.SelectToken("session_status")), 0)
+            Newsletters = Not IsNothing(.SelectToken("newsletters")) AndAlso Integer.Parse(.SelectToken("newsletters"), Globalization.NumberStyles.Integer).Equals(1)
+            AccountType = If(Not IsNothing(.SelectToken("account_type")), Integer.Parse(.SelectToken("account_type")), AccountType.USER)
+            AccountPlan = If(Not IsNothing(.SelectToken("account_plan")), Integer.Parse(.SelectToken("account_plan")), AccountPlan.DEMO)
+            SessionStatus = If(Not IsNothing(.SelectToken("session_status")), Integer.Parse(.SelectToken("session_status")), SessionStatus.OFFLINE)
             ReferralCode = If(Not IsNothing(.SelectToken("referral_code")), .SelectToken("referral_code"), "")
             IdToken = If(Not IsNothing(.SelectToken("id_token")), .SelectToken("id_token"), "")
-            IsVerified = If(Not IsNothing(.SelectToken("verified")), .SelectToken("verified").Equals(1), False)
+            IsVerified = Not IsNothing(.SelectToken("verified")) AndAlso Integer.Parse(.SelectToken("verified"), Globalization.NumberStyles.Integer).Equals(1)
         End With
     End Sub
 

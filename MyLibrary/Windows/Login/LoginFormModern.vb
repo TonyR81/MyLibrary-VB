@@ -1,5 +1,4 @@
-﻿Imports MyLibrary.Windows.Login
-Imports Newtonsoft.Json.Linq
+﻿Imports Newtonsoft.Json.Linq
 
 Public Class LoginFormModern
 
@@ -14,18 +13,53 @@ Public Class LoginFormModern
     ''' Login
     ''' </summary>
     Private Sub Login()
+        Dim errorMessage As String = ""
         Dim user As New User(TxtUsername.Text, TxtPassword.Text)
-        Dim json As JObject = New ServerRequest("login").GetResponse(user.ToPost)
-        If Not IsNothing(json) Then
-            Dim response As Boolean = json.SelectToken("response")
-            Try
-
-            Catch ex As WrongCredentialsException
-                Dim message As New MessageSplash(ex.Message, MsgBoxStyle.Critical, MessageSplash.DisplayMode.TOAST)
+        Dim db As New DatabaseHelper()
+        Try
+            If db.Login(user) Then
+                Dim json As JObject = db.Response
+                If Not IsNothing(json.SelectToken("user")) Then
+                    Dim accountType As AccountType = Integer.Parse(json.SelectToken("user").SelectToken("account_type"))
+                    Select Case accountType
+                        Case AccountType.SUPERADMIN
+                            Exit Select
+                        Case AccountType.ADMIN
+                            user = New Admin(json.SelectToken("user"))
+                        Case AccountType.MAIN
+                            Exit Select
+                        Case AccountType.USER
+                            Exit Select
+                        Case AccountType.COMPANY
+                            user = New Company(json.SelectToken("user"))
+                        Case AccountType.EMPLOYEE
+                            user = New Employee(json.SelectToken("user"))
+                        Case AccountType.CUSTOMER
+                            user = New Customer(json.SelectToken("user"))
+                    End Select
+                    Dim main As New ModernMain(user)
+                    main.Show()
+                    If SwitchRemember.Checked Then
+                        My.Settings.Logged = True
+                        My.Settings.Username = TxtUsername.Text
+                        My.Settings.Password = TxtPassword.Text
+                        My.Settings.Save()
+                    End If
+                    Close()
+                End If
+            End If
+        Catch wrongCredentials As WrongCredentialsException
+            errorMessage = wrongCredentials.GetMessage
+            TxtUsername.StartBlink()
+            TxtPassword.StartBlink()
+        Catch unverified As UnverifiedUserException
+            errorMessage = unverified.GetMessage
+        Finally
+            If Not String.IsNullOrEmpty(errorMessage) Then
+                Dim message As New MessageSplash(errorMessage, MsgBoxStyle.Critical, MessageSplash.DisplayMode.TOAST)
                 message.Show()
-                TxtUsername.SelectAll()
-            End Try
-        End If
+            End If
+        End Try
     End Sub
 
     ''' <summary>

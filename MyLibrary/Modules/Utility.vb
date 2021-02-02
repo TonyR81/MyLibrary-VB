@@ -71,7 +71,7 @@ Module Utility
     ''' </summary>
     ''' <param name="day">Date</param>
     ''' <returns>Date</returns>
-    Public Function StringToShortDate(day As Date) As Date
+    Public Function StringToShortDate(day As String) As Date
         Dim s As String() = Split(day, "-")
         Return New Date(s(0), s(1), s(2))
     End Function
