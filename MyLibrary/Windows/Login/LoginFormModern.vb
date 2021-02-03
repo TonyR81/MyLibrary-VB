@@ -2,10 +2,16 @@
 
 Public Class LoginFormModern
 
-#Region "Functions"
+#Region "Constructors"
 
+    ''' <summary>
+    ''' Creates a new empty instance of LoginFormModern class
+    ''' </summary>
+    Public Sub New()
+        InitializeComponent()
+    End Sub
 
-#End Region ' Fine Regione Functions
+#End Region ' End Constructors
 
 #Region "Subs"
 
@@ -101,7 +107,7 @@ Public Class LoginFormModern
             For Each t As MyTextBox In Me.Controls.OfType(Of MyTextBox)
                 t.StartBlink()
             Next
-            MyMessage("Sbrombacunio in the baby night tomorrow", MsgBoxStyle.Critical, MessageSplash.DisplayMode.TOAST)
+            MyMessage(ex.GetMessage, MsgBoxStyle.Critical, MessageSplash.DisplayMode.TOAST)
         End Try
     End Sub
 

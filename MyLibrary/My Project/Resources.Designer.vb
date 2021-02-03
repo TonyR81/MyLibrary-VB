@@ -193,9 +193,9 @@ Namespace My.Resources
         '''<summary>
         '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Utente() As System.Drawing.Bitmap
+        Friend ReadOnly Property user() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Utente", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("user", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

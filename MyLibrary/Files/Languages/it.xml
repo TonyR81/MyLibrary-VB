@@ -52,5 +52,10 @@
     <username_used>Nome utente già in uso</username_used>
     <email_used>Email già in uso</email_used>
     <phone_used>Numero di telefono già in uso</phone_used>
+    <required_fields>Campi richiesti</required_fields>
   </exceptions>
+
+  <forms>
+    <login>Accesso</login>
+  </forms>
 </strings>
