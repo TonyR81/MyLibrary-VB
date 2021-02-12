@@ -141,7 +141,17 @@ Public Class LoginFormClassic
         End Try
     End Sub
 
-#End Region ' Fine Events
+    Private Sub LinkRegister_Click(sender As Object, e As EventArgs) Handles LinkRegister.Click
+        Try
+            ' Process.Start(String.Format("{0}\register.php", My.Settings.Domain))
+            Dim register As New RegisterClassic
+            register.Show()
+            Hide()
+        Catch ex As Exception
+            ' Registrazione tramite form locale
+        End Try
+    End Sub
 
+#End Region ' Fine Events
 
 End Class

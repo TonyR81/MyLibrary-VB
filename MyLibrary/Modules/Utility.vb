@@ -321,7 +321,7 @@ Module Utility
     ''' </summary>
     ''' <param name="cardSize">Size</param>
     ''' <returns>Region</returns>
-    Public Function BorderRadius(cardSize As Size) As Region
+    Public Function BorderRadius(cardSize As Size) As Drawing.Region
         Dim radius As New Drawing2D.GraphicsPath
         With radius
             .StartFigure()
@@ -337,7 +337,7 @@ Module Utility
             .AddArc(New Rectangle(0, cardSize.Height - 10, 10, 10), 90, 90)
             .CloseFigure()
         End With
-        Return New Region(radius)
+        Return New Drawing.Region(radius)
     End Function
 
 #End Region ' End Windows Forms

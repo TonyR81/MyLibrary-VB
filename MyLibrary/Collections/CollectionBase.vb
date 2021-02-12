@@ -56,6 +56,7 @@ Public MustInherit Class CollectionBase
     ''' <param name="array">JArray</param>
     ''' <see cref="JArray"/>
     Public Sub New(array As JArray)
+        Initialize()
         AddRange(array)
     End Sub
 
@@ -85,6 +86,14 @@ Public MustInherit Class CollectionBase
     ''' </summary>
     ''' <param name="array">JArray</param>
     Public MustOverride Sub AddRange(array As JArray) Implements ICollectionBase.AddRange
+
+    ''' <summary>
+    ''' Returns a list of current collection
+    ''' </summary>
+    ''' <returns>List(Of Database)</returns>
+    Public Function ToList() As List(Of Database)
+        Return Items.ToList
+    End Function
 
 #End Region ' Fine Regions Subs
 

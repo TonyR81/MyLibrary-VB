@@ -160,7 +160,7 @@ Partial Class LoginFormClassic
         Me.BtnLogin.Text = "Login"
         Me.BtnLogin.UseVisualStyleBackColor = False
         '
-        'LoginForm
+        'LoginFormClassic
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -178,7 +178,7 @@ Partial Class LoginFormClassic
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Language = Language1
         Me.MinimumSize = New System.Drawing.Size(403, 254)
-        Me.Name = "LoginForm"
+        Me.Name = "LoginFormClassic"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         CType(Me.UserPicture, System.ComponentModel.ISupportInitialize).EndInit()

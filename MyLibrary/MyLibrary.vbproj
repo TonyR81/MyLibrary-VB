@@ -87,7 +87,18 @@
     <Compile Include="Classes\Database.vb" />
     <Compile Include="Classes\DatabaseHelper.vb" />
     <Compile Include="Classes\Employee.vb" />
-    <Compile Include="Classes\GeoLocation.vb" />
+    <Compile Include="Classes\GeoLocation\Country.vb" />
+    <Compile Include="Classes\GeoLocation\GeoLocation.vb" />
+    <Compile Include="Classes\GeoLocation\LocationBase.vb" />
+    <Compile Include="Classes\GeoLocation\Municipality.vb" />
+    <Compile Include="Classes\GeoLocation\ZipCode.vb" />
+    <Compile Include="Collections\GeoLocation\MunicipalitiesCollection.vb" />
+    <Compile Include="Classes\GeoLocation\Province.vb" />
+    <Compile Include="Classes\GeoLocation\Region.vb" />
+    <Compile Include="Collections\GeoLocation\ProvincesCollection.vb" />
+    <Compile Include="Collections\GeoLocation\RegionsCollection.vb" />
+    <Compile Include="Collections\GeoLocation\CountriesCollection.vb" />
+    <Compile Include="Collections\GeoLocation\ZipCodesCollection.vb" />
     <Compile Include="Components\Buttons\CloseButton.Designer.vb">
       <DependentUpon>CloseButton.vb</DependentUpon>
     </Compile>
@@ -110,6 +121,12 @@
       <DependentUpon>Switch.vb</DependentUpon>
     </Compile>
     <Compile Include="Components\Switch\Switch.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Textbox\GeoLocationSelector.Designer.vb">
+      <DependentUpon>GeoLocationSelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Textbox\GeoLocationSelector.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Toolbar\Toolbar.designer.vb">
@@ -229,6 +246,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Modules\Utility.vb" />
+    <Compile Include="Settings.vb" />
     <Compile Include="Windows\FormBase.Designer.vb">
       <DependentUpon>FormBase.vb</DependentUpon>
     </Compile>
@@ -254,6 +272,12 @@
     <Compile Include="Windows\Main\ModernMain.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Windows\Register\RegisterClassic.Designer.vb">
+      <DependentUpon>RegisterClassic.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Register\RegisterClassic.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Components\Buttons\CloseButton.resx">
@@ -270,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Switch\Switch.resx">
       <DependentUpon>Switch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Textbox\GeoLocationSelector.resx">
+      <DependentUpon>GeoLocationSelector.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Textbox\MyPassword.resx">
       <DependentUpon>MyPassword.vb</DependentUpon>
@@ -306,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Main\ModernMain.resx">
       <DependentUpon>ModernMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Register\RegisterClassic.resx">
+      <DependentUpon>RegisterClassic.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -113,6 +113,18 @@ Namespace My
                 Me("Password") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://lavanderialapegreen.it/gpricing")>  _
+        Public Property Domain() As String
+            Get
+                Return CType(Me("Domain"),String)
+            End Get
+            Set
+                Me("Domain") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -8,10 +8,10 @@ Public NotInheritable Class ServerRequest
 
 #Region "Private Declaration"
 
-    Private Const DOMAIN As String = "https://lavanderialapegreen.it/gpricing/includes/"
+    Private ReadOnly DOMAIN As String = String.Format("{0}/includes", My.Settings.Domain)
 
     Private ReadOnly Type As RequestType
-    Private Url As String
+    Private ReadOnly Url As String
 
     Public Enum RequestType
         FORM = 0
@@ -26,7 +26,7 @@ Public NotInheritable Class ServerRequest
     ''' Creates a new empty instance of ServerDatabase class setting request type to x-www-form-urlencoded
     ''' </summary>
     Public Sub New(url As String)
-        Me.Url = String.Format("{0}{1}", DOMAIN, If(Not url.Contains(".php"), String.Format("{0}.php", url), url))
+        Me.Url = String.Format("{0}/{1}", DOMAIN, If(Not url.Contains(".php"), String.Format("{0}.php", url), url))
         Type = RequestType.FORM
     End Sub
 

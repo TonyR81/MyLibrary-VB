@@ -17,5 +17,8 @@
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Domain" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://lavanderialapegreen.it/gpricing</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

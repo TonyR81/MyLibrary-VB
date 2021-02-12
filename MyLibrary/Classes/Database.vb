@@ -70,7 +70,8 @@ Public MustInherit Class Database
     End Sub
 
     ''' <summary>
-    ''' Creates a new instance of Database object class given a json object that contains database object properties information
+    ''' Creates a new instance of Database object class given the id number associated with the object 
+    ''' into database, the id number associated with the parent of current object into database
     ''' </summary>
     ''' <param name="id">Integer</param>
     ''' <param name="idParent">Integer</param>
