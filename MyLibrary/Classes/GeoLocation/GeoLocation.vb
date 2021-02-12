@@ -13,6 +13,7 @@ Public Class GeoLocation
     Private mCountry As String
     Private mProvince As String
     Private mRegion As String
+    Private mMunicipality As String
     Private mZipCode As String
     Private mFormattedAddress As String
     Private mLatitude As String
@@ -111,6 +112,21 @@ Public Class GeoLocation
         Set(ByVal value As String)
             mRegion = value
             RaiseEvent RegionChanged(Me, value)
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' Gets or sets Municipality
+    ''' </summary>
+    ''' <returns>String</returns>
+    <DefaultValue(""), Category("Properties")>
+    Public Property Municipality() As String Implements IGeoLocation.Municipality
+        Get
+            Return mMunicipality
+        End Get
+        Set(ByVal value As String)
+            mMunicipality = value
+            RaiseEvent MunicipalityChanged(Me, value)
         End Set
     End Property
 
@@ -234,18 +250,19 @@ Public Class GeoLocation
     ''' <param name="province">String</param>
     ''' <param name="region">String</param>
     ''' <param name="zipCode">String</param>
-    ''' <param name="formattedAddres">String</param>
+    ''' <param name="formattedAddress">String</param>
     ''' <param name="latitude">String</param>
     ''' <param name="longitude">String</param>
-    Public Sub New(address As String, streetNumber As String, city As String, country As String, province As String, region As String, zipCode As String, formattedAddres As String, latitude As String, longitude As String)
+    Public Sub New(address As String, streetNumber As String, city As String, country As String, province As String, region As String, municipality As String, zipCode As String, formattedAddress As String, latitude As String, longitude As String)
         Me.Address = address
         Me.StreetNumber = streetNumber
         Me.City = city
         Me.Country = country
         Me.Province = province
         Me.Region = region
+        Me.Municipality = municipality
         Me.ZipCode = zipCode
-        Me.FormattedAddress = formattedAddres
+        Me.FormattedAddress = formattedAddress
         Me.Latitude = latitude
         Me.Longitude = longitude
         If String.IsNullOrEmpty(latitude) Or String.IsNullOrEmpty(longitude) Then
@@ -385,6 +402,7 @@ Public Class GeoLocation
         ZipCode = String.Empty
         Region = String.Empty
         Province = String.Empty
+        Municipality = String.Empty
         Latitude = String.Empty
         Longitude = String.Empty
         FormattedAddress = String.Empty
@@ -408,6 +426,7 @@ Public Class GeoLocation
             Country = If(Not IsNothing(json.SelectToken("country")), json.SelectToken("country"), "")
             Region = If(Not IsNothing(json.SelectToken("region")), json.SelectToken("region"), "")
             Province = If(Not IsNothing(json.SelectToken("province")), json.SelectToken("province"), "")
+            Municipality = If(Not IsNothing(json.SelectToken("municipality")), json.SelectToken("municipality"), "")
             ZipCode = If(Not IsNothing(json.SelectToken("zip_code")), json.SelectToken("zip_code"), "")
             FormattedAddress = If(Not IsNothing(json.SelectToken("formatted_address")), json.SelectToken("formatted_address"), "")
             Latitude = If(Not IsNothing(json.SelectToken("latitude")), json.SelectToken("latitude"), "")
@@ -430,6 +449,7 @@ Public Class GeoLocation
     Public Event ZipCodeChanged(ByVal sender As Object, ByVal zipCode As String) Implements IGeoLocation.ZipCodeChanged
     Public Event ProvinceChanged(ByVal sender As Object, ByVal province As String) Implements IGeoLocation.ProvinceChanged
     Public Event RegionChanged(ByVal sender As Object, ByVal region As String) Implements IGeoLocation.RegionChanged
+    Public Event MunicipalityChanged(ByVal sender As Object, ByVal municipality As String) Implements IGeoLocation.MunicipalityChanged
     Public Event LatitudeChanged(ByVal sender As Object, ByVal latitude As String) Implements IGeoLocation.LatitudeChanged
     Public Event LongitudeChanged(ByVal sender As Object, ByVal longitude As String) Implements IGeoLocation.LongitudeChanged
     Public Event FormattedAddressChanged(ByVal sender As Object, ByVal formattedAddress As String) Implements IGeoLocation.FormattedAddressChanged

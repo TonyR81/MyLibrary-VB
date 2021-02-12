@@ -48,6 +48,7 @@ Public Interface IGeoLocation
     Property Province As String
     Property Region As String
     Property PlaceId As String
+    Property Municipality As String
 
 #End Region ' End Properties
 
@@ -64,6 +65,7 @@ Public Interface IGeoLocation
     Event LongitudeChanged(sender As Object, longitude As String)
     Event FormattedAddressChanged(sender As Object, formattedAddress As String)
     Event PlaceIdChanged(sender As Object, placeId As String)
+    Event MunicipalityChanged(sender As Object, municipality As String)
 
 #End Region ' End Events
 
