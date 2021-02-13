@@ -52,9 +52,10 @@ Partial Class GeoLocationSelector
         '
         Me.GroupBoxLocation.AutoSize = True
         Me.GroupBoxLocation.Controls.Add(Me.MainContainer)
+        Me.GroupBoxLocation.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBoxLocation.Location = New System.Drawing.Point(0, 0)
         Me.GroupBoxLocation.Name = "GroupBoxLocation"
-        Me.GroupBoxLocation.Size = New System.Drawing.Size(366, 195)
+        Me.GroupBoxLocation.Size = New System.Drawing.Size(372, 198)
         Me.GroupBoxLocation.TabIndex = 0
         Me.GroupBoxLocation.TabStop = False
         Me.GroupBoxLocation.Text = "Location"
@@ -74,7 +75,7 @@ Partial Class GeoLocationSelector
         Me.MainContainer.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.MainContainer.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.MainContainer.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.MainContainer.Size = New System.Drawing.Size(360, 176)
+        Me.MainContainer.Size = New System.Drawing.Size(366, 179)
         Me.MainContainer.TabIndex = 0
         '
         'PanelTop
@@ -99,7 +100,7 @@ Partial Class GeoLocationSelector
         Me.PanelTop.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.PanelTop.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.PanelTop.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.PanelTop.Size = New System.Drawing.Size(354, 80)
+        Me.PanelTop.Size = New System.Drawing.Size(360, 80)
         Me.PanelTop.TabIndex = 0
         '
         'LabelCountry
@@ -114,7 +115,7 @@ Partial Class GeoLocationSelector
         'LabelRegion
         '
         Me.LabelRegion.AutoSize = True
-        Me.LabelRegion.Location = New System.Drawing.Point(180, 0)
+        Me.LabelRegion.Location = New System.Drawing.Point(183, 0)
         Me.LabelRegion.Name = "LabelRegion"
         Me.LabelRegion.Size = New System.Drawing.Size(41, 13)
         Me.LabelRegion.TabIndex = 1
@@ -132,7 +133,7 @@ Partial Class GeoLocationSelector
         'LabelMunicipality
         '
         Me.LabelMunicipality.AutoSize = True
-        Me.LabelMunicipality.Location = New System.Drawing.Point(180, 40)
+        Me.LabelMunicipality.Location = New System.Drawing.Point(183, 40)
         Me.LabelMunicipality.Name = "LabelMunicipality"
         Me.LabelMunicipality.Size = New System.Drawing.Size(62, 13)
         Me.LabelMunicipality.TabIndex = 3
@@ -146,8 +147,8 @@ Partial Class GeoLocationSelector
         Me.ComboCountry.FormattingEnabled = True
         Me.ComboCountry.Location = New System.Drawing.Point(3, 16)
         Me.ComboCountry.Name = "ComboCountry"
-        Me.ComboCountry.Size = New System.Drawing.Size(171, 21)
-        Me.ComboCountry.TabIndex = 4
+        Me.ComboCountry.Size = New System.Drawing.Size(174, 21)
+        Me.ComboCountry.TabIndex = 0
         '
         'ComboRegion
         '
@@ -155,10 +156,10 @@ Partial Class GeoLocationSelector
         Me.ComboRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboRegion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboRegion.FormattingEnabled = True
-        Me.ComboRegion.Location = New System.Drawing.Point(180, 16)
+        Me.ComboRegion.Location = New System.Drawing.Point(183, 16)
         Me.ComboRegion.Name = "ComboRegion"
-        Me.ComboRegion.Size = New System.Drawing.Size(171, 21)
-        Me.ComboRegion.TabIndex = 5
+        Me.ComboRegion.Size = New System.Drawing.Size(174, 21)
+        Me.ComboRegion.TabIndex = 1
         '
         'ComboProvince
         '
@@ -168,8 +169,8 @@ Partial Class GeoLocationSelector
         Me.ComboProvince.FormattingEnabled = True
         Me.ComboProvince.Location = New System.Drawing.Point(3, 56)
         Me.ComboProvince.Name = "ComboProvince"
-        Me.ComboProvince.Size = New System.Drawing.Size(171, 21)
-        Me.ComboProvince.TabIndex = 6
+        Me.ComboProvince.Size = New System.Drawing.Size(174, 21)
+        Me.ComboProvince.TabIndex = 2
         '
         'ComboMunicipality
         '
@@ -177,10 +178,10 @@ Partial Class GeoLocationSelector
         Me.ComboMunicipality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboMunicipality.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboMunicipality.FormattingEnabled = True
-        Me.ComboMunicipality.Location = New System.Drawing.Point(180, 56)
+        Me.ComboMunicipality.Location = New System.Drawing.Point(183, 56)
         Me.ComboMunicipality.Name = "ComboMunicipality"
-        Me.ComboMunicipality.Size = New System.Drawing.Size(171, 21)
-        Me.ComboMunicipality.TabIndex = 7
+        Me.ComboMunicipality.Size = New System.Drawing.Size(174, 21)
+        Me.ComboMunicipality.TabIndex = 3
         '
         'PanelMiddle
         '
@@ -198,21 +199,21 @@ Partial Class GeoLocationSelector
         Me.PanelMiddle.RowCount = 2
         Me.PanelMiddle.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.PanelMiddle.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.PanelMiddle.Size = New System.Drawing.Size(354, 39)
+        Me.PanelMiddle.Size = New System.Drawing.Size(360, 39)
         Me.PanelMiddle.TabIndex = 1
         '
         'TxtStreetNumber
         '
         Me.TxtStreetNumber.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TxtStreetNumber.Location = New System.Drawing.Point(250, 16)
+        Me.TxtStreetNumber.Location = New System.Drawing.Point(255, 16)
         Me.TxtStreetNumber.Name = "TxtStreetNumber"
-        Me.TxtStreetNumber.Size = New System.Drawing.Size(101, 20)
-        Me.TxtStreetNumber.TabIndex = 4
+        Me.TxtStreetNumber.Size = New System.Drawing.Size(102, 20)
+        Me.TxtStreetNumber.TabIndex = 1
         '
         'LabelStreetNumber
         '
         Me.LabelStreetNumber.AutoSize = True
-        Me.LabelStreetNumber.Location = New System.Drawing.Point(250, 0)
+        Me.LabelStreetNumber.Location = New System.Drawing.Point(255, 0)
         Me.LabelStreetNumber.Name = "LabelStreetNumber"
         Me.LabelStreetNumber.Size = New System.Drawing.Size(19, 13)
         Me.LabelStreetNumber.TabIndex = 3
@@ -232,8 +233,8 @@ Partial Class GeoLocationSelector
         Me.TxtAddress.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TxtAddress.Location = New System.Drawing.Point(3, 16)
         Me.TxtAddress.Name = "TxtAddress"
-        Me.TxtAddress.Size = New System.Drawing.Size(241, 20)
-        Me.TxtAddress.TabIndex = 2
+        Me.TxtAddress.Size = New System.Drawing.Size(246, 20)
+        Me.TxtAddress.TabIndex = 0
         '
         'PanelBottom
         '
@@ -249,7 +250,7 @@ Partial Class GeoLocationSelector
         Me.PanelBottom.RowCount = 2
         Me.PanelBottom.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.PanelBottom.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.PanelBottom.Size = New System.Drawing.Size(354, 39)
+        Me.PanelBottom.Size = New System.Drawing.Size(360, 42)
         Me.PanelBottom.TabIndex = 2
         '
         'LabelZipCode
@@ -267,17 +268,16 @@ Partial Class GeoLocationSelector
         Me.TxtZipCode.Location = New System.Drawing.Point(3, 16)
         Me.TxtZipCode.Name = "TxtZipCode"
         Me.TxtZipCode.Size = New System.Drawing.Size(100, 20)
-        Me.TxtZipCode.TabIndex = 1
+        Me.TxtZipCode.TabIndex = 0
         '
         'GeoLocationSelector
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.Controls.Add(Me.GroupBoxLocation)
         Me.Name = "GeoLocationSelector"
-        Me.Size = New System.Drawing.Size(369, 198)
+        Me.Size = New System.Drawing.Size(372, 198)
         Me.GroupBoxLocation.ResumeLayout(False)
         Me.GroupBoxLocation.PerformLayout()
         Me.MainContainer.ResumeLayout(False)

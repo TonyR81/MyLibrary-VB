@@ -21,7 +21,6 @@
 
     Private Async Sub RegisterClassic_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim r = Await LocationSelector.LoadCountriesAsync
-
     End Sub
 
 #End Region ' End Constructors

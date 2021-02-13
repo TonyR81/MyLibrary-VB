@@ -70,6 +70,22 @@ Public Class GeoLocation
     End Property
 
     ''' <summary>
+    ''' Returns if current location is valid
+    ''' </summary>
+    ''' <returns>Boolean</returns>
+    Public ReadOnly Property IsValid As Boolean Implements IGeoLocation.IsValid
+        Get
+            Return Not String.IsNullOrEmpty(Country) And
+                Not String.IsNullOrEmpty(Region) And
+                Not String.IsNullOrEmpty(Province) And
+                Not String.IsNullOrEmpty(City) And
+                Not String.IsNullOrEmpty(Address) And
+                Not String.IsNullOrEmpty(StreetNumber) And
+                Not String.IsNullOrEmpty(ZipCode)
+        End Get
+    End Property
+
+    ''' <summary>
     ''' Gets or sets the country of current GeoLocation
     ''' </summary>
     ''' <returns>String</returns>

@@ -48,6 +48,7 @@ Public Interface IGeoLocation
     Property FormattedAddress As String
     Property Status As ILocationStatus
     Property PlaceId As String
+    ReadOnly Property IsValid As Boolean
 
 #End Region ' End Properties
 

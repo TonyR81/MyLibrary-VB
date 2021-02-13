@@ -13,27 +13,15 @@ Public Class GeoLocationSelector
 
 #Region "Private Declarations"
 
-    Private mGeoLocation As GeoLocation
     Private mCountries As CountriesCollection
     Private Delegate Sub OnSetCountriesDelegate()
     Private OnSetCountries As New OnSetCountriesDelegate(AddressOf SetCountries)
+    Private mSelectedLocation As GeoLocation
 
 #End Region ' Fine Regions Private Declarations	
 
 #Region "Getters and Setters"
 
-    ''' <summary>
-    ''' Gets or sets GeoLocation
-    ''' </summary>
-    ''' <returns>GeoLocation</returns>
-    Public Property GeoLocation() As GeoLocation
-        Get
-            Return mGeoLocation
-        End Get
-        Set(ByVal value As GeoLocation)
-            mGeoLocation = value
-        End Set
-    End Property
 
     ''' <summary>
     ''' Gets or sets Countries
@@ -50,13 +38,16 @@ Public Class GeoLocationSelector
     End Property
 
     ''' <summary>
-    ''' Gets the selected country of current selector
+    ''' Gets or sets the selected location
     ''' </summary>
-    ''' <returns>Country</returns>
-    Public ReadOnly Property SelectedCountry As Country
+    ''' <returns>GeoLocation</returns>
+    Public Property SelectedLocation() As GeoLocation
         Get
-            Return If(ComboCountry.SelectedIndex = -1 OrElse IsNothing(Countries) OrElse String.IsNullOrEmpty(ComboCountry.Text), Nothing, Countries.Items(ComboCountry.SelectedIndex))
+            Return mSelectedLocation
         End Get
+        Set(ByVal value As GeoLocation)
+            mSelectedLocation = value
+        End Set
     End Property
 
     ''' <summary>
@@ -65,8 +56,8 @@ Public Class GeoLocationSelector
     ''' <returns>Boolean</returns>
     Public ReadOnly Property IsValid() As Boolean
         Get
-            Return (GroupBoxLocation.Controls.OfType(Of ComboBox).Where(Function(x) String.IsNullOrEmpty(x.Text)).Count = 0) AndAlso
-                (GroupBoxLocation.Controls.OfType(Of TextBox).Where(Function(x) String.IsNullOrEmpty(x.Text)).Count = 0)
+            Return Not IsNothing(SelectedLocation) AndAlso
+                SelectedLocation.IsValid()
         End Get
     End Property
 
@@ -79,7 +70,6 @@ Public Class GeoLocationSelector
     ''' </summary>
     Public Sub New()
         InitializeComponent()
-        GeoLocation = New GeoLocation()
         ComboCountry.BackColor = Color.White
         ComboRegion.BackColor = Color.White
         ComboProvince.BackColor = Color.White
@@ -148,21 +138,29 @@ Public Class GeoLocationSelector
         End With
     End Sub
 
-#End Region ' Fine Regions Subs
-
-#Region "Events"
-
+    ''' <summary>
+    ''' Clear all
+    ''' </summary>
     Private Sub ClearAll()
-        For Each combo As ComboBox In Me.Controls.OfType(Of ComboBox)
+        For Each combo As ComboBox In GroupBoxLocation.Controls.OfType(Of ComboBox)
             combo.Items.Clear()
             combo.SelectedIndex = -1
         Next
+        For Each text As TextBox In GroupBoxLocation.Controls.OfType(Of TextBox)
+            text.Clear()
+        Next
+        SelectedLocation = Nothing
     End Sub
+
+#End Region ' Fine Regions Subs
+
+#Region "Events"
 
     Private Sub ComboCountry_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboCountry.SelectedIndexChanged
         ClearAll()
         If ComboCountry.SelectedIndex > -1 Then
             ComboRegion.Items.AddRange(Countries.GetRegions(ComboCountry.SelectedIndex).GetNames)
+            SelectedLocation = New GeoLocation() With {.Country = ComboCountry.Text}
         End If
     End Sub
 
@@ -174,6 +172,7 @@ Public Class GeoLocationSelector
             TxtStreetNumber.Text = String.Empty
             TxtZipCode.Text = String.Empty
             ComboProvince.Items.AddRange(Countries.GetRegions(ComboCountry.SelectedIndex).GetProvinces(ComboRegion.SelectedIndex).GetNames())
+            SelectedLocation.Region = ComboRegion.Text
         End If
     End Sub
 
@@ -182,6 +181,7 @@ Public Class GeoLocationSelector
             TxtAddress.Text = String.Empty
             TxtStreetNumber.Text = String.Empty
             TxtZipCode.Text = String.Empty
+            SelectedLocation.Country = ComboMunicipality.Text
         End If
     End Sub
 
@@ -192,6 +192,25 @@ Public Class GeoLocationSelector
             TxtStreetNumber.Text = String.Empty
             TxtZipCode.Text = String.Empty
             ComboMunicipality.Items.AddRange(Countries.GetRegions(ComboCountry.SelectedIndex).GetProvinces(ComboRegion.SelectedIndex).GetMunicipalities(ComboProvince.SelectedIndex).GetNames())
+            SelectedLocation.Province = ComboProvince.Text
+        End If
+    End Sub
+
+    Private Sub TxtAddress_TextChanged(sender As Object, e As EventArgs) Handles TxtAddress.TextChanged
+        If Not IsNothing(SelectedLocation) Then
+            SelectedLocation.Address = TxtAddress.Text
+        End If
+    End Sub
+
+    Private Sub TxtStreetNumber_TextChanged(sender As Object, e As EventArgs) Handles TxtStreetNumber.TextChanged
+        If Not IsNothing(SelectedLocation) Then
+            SelectedLocation.StreetNumber = TxtStreetNumber.Text
+        End If
+    End Sub
+
+    Private Sub TxtZipCode_TextChanged(sender As Object, e As EventArgs) Handles TxtZipCode.TextChanged
+        If Not IsNothing(SelectedLocation) Then
+            SelectedLocation.ZipCode = TxtZipCode.Text
         End If
     End Sub
 

@@ -7,7 +7,6 @@ Partial Class RegisterClassic
         Me.components = New System.ComponentModel.Container()
         Dim GeoLocation1 As MyLibrary.GeoLocation = New MyLibrary.GeoLocation()
         Dim Language1 As MyLibrary.Language = New MyLibrary.Language()
-        Dim Language2 As MyLibrary.Language = New MyLibrary.Language()
         Me.LabelLastName = New System.Windows.Forms.Label()
         Me.MyTextBox1 = New MyLibrary.MyTextBox()
         Me.MyTextBox2 = New MyLibrary.MyTextBox()
@@ -64,11 +63,10 @@ Partial Class RegisterClassic
         'LocationSelector
         '
         Me.LocationSelector.AutoSize = True
-        Me.LocationSelector.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.LocationSelector.GeoLocation = GeoLocation1
         Me.LocationSelector.Location = New System.Drawing.Point(12, 51)
         Me.LocationSelector.Name = "LocationSelector"
-        Me.LocationSelector.Size = New System.Drawing.Size(372, 198)
+        Me.LocationSelector.Size = New System.Drawing.Size(484, 195)
         Me.LocationSelector.TabIndex = 4
         '
         'RegisterClassic
@@ -80,7 +78,7 @@ Partial Class RegisterClassic
         Me.Controls.Add(Me.LabelFirstName)
         Me.Controls.Add(Me.MyTextBox1)
         Me.Controls.Add(Me.LabelLastName)
-        Me.Language = Language2
+        Me.Language = Language1
         Me.Name = "RegisterClassic"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Register"
