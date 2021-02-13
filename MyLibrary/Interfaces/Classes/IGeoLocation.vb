@@ -36,36 +36,34 @@ Public Interface IGeoLocation
 
 #Region "Getters and Setters"
 
+    Property Country As String
+    Property Region As String
+    Property Province As String
+    Property City As String
     Property Address As String
     Property StreetNumber As String
-    Property City As String
-    Property Country As String
     Property ZipCode As String
     Property Latitude As String
     Property Longitude As String
     Property FormattedAddress As String
     Property Status As ILocationStatus
-    Property Province As String
-    Property Region As String
     Property PlaceId As String
-    Property Municipality As String
 
 #End Region ' End Properties
 
 #Region "Events"
 
+    Event CountryChanged(sender As Object, country As String)
+    Event RegionChanged(sender As Object, region As String)
+    Event ProvinceChanged(sender As Object, province As String)
+    Event CityChanged(sender As Object, city As String)
     Event AddressChanged(sender As Object, address As String)
     Event StreetNumberChanged(sender As Object, streetNumber As String)
-    Event CityChanged(sender As Object, city As String)
-    Event CountryChanged(sender As Object, country As String)
     Event ZipCodeChanged(ByVal sender As Object, ByVal zipCode As String)
-    Event ProvinceChanged(sender As Object, province As String)
-    Event RegionChanged(sender As Object, region As String)
     Event LatitudeChanged(sender As Object, latitude As String)
     Event LongitudeChanged(sender As Object, longitude As String)
     Event FormattedAddressChanged(sender As Object, formattedAddress As String)
     Event PlaceIdChanged(sender As Object, placeId As String)
-    Event MunicipalityChanged(sender As Object, municipality As String)
 
 #End Region ' End Events
 
