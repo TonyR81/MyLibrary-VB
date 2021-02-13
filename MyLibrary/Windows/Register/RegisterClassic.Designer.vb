@@ -7,10 +7,11 @@ Partial Class RegisterClassic
         Me.components = New System.ComponentModel.Container()
         Dim GeoLocation1 As MyLibrary.GeoLocation = New MyLibrary.GeoLocation()
         Dim Language1 As MyLibrary.Language = New MyLibrary.Language()
+        Dim Language2 As MyLibrary.Language = New MyLibrary.Language()
         Me.LabelLastName = New System.Windows.Forms.Label()
         Me.MyTextBox1 = New MyLibrary.MyTextBox()
         Me.MyTextBox2 = New MyLibrary.MyTextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.LabelFirstName = New System.Windows.Forms.Label()
         Me.LocationSelector = New MyLibrary.GeoLocationSelector()
         Me.SuspendLayout()
         '
@@ -51,22 +52,23 @@ Partial Class RegisterClassic
         Me.MyTextBox2.Size = New System.Drawing.Size(239, 20)
         Me.MyTextBox2.TabIndex = 3
         '
-        'Label1
+        'LabelFirstName
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(257, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(58, 13)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Last Name"
+        Me.LabelFirstName.AutoSize = True
+        Me.LabelFirstName.Location = New System.Drawing.Point(257, 9)
+        Me.LabelFirstName.Name = "LabelFirstName"
+        Me.LabelFirstName.Size = New System.Drawing.Size(55, 13)
+        Me.LabelFirstName.TabIndex = 2
+        Me.LabelFirstName.Text = "First name"
         '
         'LocationSelector
         '
         Me.LocationSelector.AutoSize = True
+        Me.LocationSelector.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.LocationSelector.GeoLocation = GeoLocation1
         Me.LocationSelector.Location = New System.Drawing.Point(12, 51)
         Me.LocationSelector.Name = "LocationSelector"
-        Me.LocationSelector.Size = New System.Drawing.Size(483, 184)
+        Me.LocationSelector.Size = New System.Drawing.Size(372, 198)
         Me.LocationSelector.TabIndex = 4
         '
         'RegisterClassic
@@ -75,10 +77,10 @@ Partial Class RegisterClassic
         Me.ClientSize = New System.Drawing.Size(507, 387)
         Me.Controls.Add(Me.LocationSelector)
         Me.Controls.Add(Me.MyTextBox2)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.LabelFirstName)
         Me.Controls.Add(Me.MyTextBox1)
         Me.Controls.Add(Me.LabelLastName)
-        Me.Language = Language1
+        Me.Language = Language2
         Me.Name = "RegisterClassic"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Register"
@@ -91,6 +93,6 @@ Partial Class RegisterClassic
     Friend WithEvents MyTextBox1 As MyTextBox
     Private components As ComponentModel.IContainer
     Friend WithEvents MyTextBox2 As MyTextBox
-    Friend WithEvents Label1 As Windows.Forms.Label
+    Friend WithEvents LabelFirstName As Windows.Forms.Label
     Friend WithEvents LocationSelector As GeoLocationSelector
 End Class

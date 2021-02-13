@@ -9,6 +9,7 @@ Imports System.Drawing
 ''' <para>Implements IGeoLocationSelector</para>
 ''' </summary>
 Public Class GeoLocationSelector
+    Implements ITranslatable
 
 #Region "Private Declarations"
 
@@ -55,6 +56,17 @@ Public Class GeoLocationSelector
     Public ReadOnly Property SelectedCountry As Country
         Get
             Return If(ComboCountry.SelectedIndex = -1 OrElse IsNothing(Countries) OrElse String.IsNullOrEmpty(ComboCountry.Text), Nothing, Countries.Items(ComboCountry.SelectedIndex))
+        End Get
+    End Property
+
+    ''' <summary>
+    ''' Check if current location is valid
+    ''' </summary>
+    ''' <returns>Boolean</returns>
+    Public ReadOnly Property IsValid() As Boolean
+        Get
+            Return (GroupBoxLocation.Controls.OfType(Of ComboBox).Where(Function(x) String.IsNullOrEmpty(x.Text)).Count = 0) AndAlso
+                (GroupBoxLocation.Controls.OfType(Of TextBox).Where(Function(x) String.IsNullOrEmpty(x.Text)).Count = 0)
         End Get
     End Property
 
@@ -117,6 +129,23 @@ Public Class GeoLocationSelector
     Private Sub SetCountries()
         ComboCountry.Items.Clear()
         ComboCountry.Items.AddRange(Countries.GetNames())
+    End Sub
+
+    ''' <summary>
+    ''' Translate current component with the specified language
+    ''' </summary>
+    ''' <param name="language">Language</param>
+    Public Sub Translate(language As Language) Implements ITranslatable.Translate
+        With language
+            GroupBoxLocation.Text = .GetString("location", "title")
+            LabelAddress.Text = .GetString("location", "address")
+            LabelStreetNumber.Text = .GetString("location", "street_number")
+            LabelCountry.Text = .GetString("location", "country")
+            LabelRegion.Text = .GetString("location", "region")
+            LabelProvince.Text = .GetString("location", "province")
+            LabelMunicipality.Text = .GetString("location", "municipality")
+            LabelZipCode.Text = .GetString("location", "zip_code")
+        End With
     End Sub
 
 #End Region ' Fine Regions Subs

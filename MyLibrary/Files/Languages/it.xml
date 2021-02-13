@@ -29,6 +29,11 @@
     <symbolics>Simboli</symbolics>
   </character>
 
+  <person>
+    <last_name>Cognome</last_name>
+    <first_name>Nome</first_name>
+  </person>
+  
   <user>
     <phone>Cellulare</phone>
     <fiscal_code>Codice fiscale</fiscal_code>
@@ -58,4 +63,17 @@
   <forms>
     <login>Accesso</login>
   </forms>
+
+  <location>
+    <title>Località</title>
+    <country>Paese</country>
+    <region>Regione</region>
+    <province>Provincia</province>
+    <city>Città</city>
+    <address>Indirizzo</address>
+    <street_number>N°</street_number>
+    <zip_code>CAP</zip_code>
+    <municipality>Comune</municipality>
+  </location>
+  
 </strings>

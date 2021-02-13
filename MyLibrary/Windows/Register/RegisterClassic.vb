@@ -33,6 +33,17 @@
 
 #Region "Subs"
 
+    ''' <summary>
+    ''' Translate current form
+    ''' </summary>
+    Protected Overrides Sub Translate()
+        MyBase.Translate()
+        With Language
+            LabelLastName.Text = .GetString("person", "last_name")
+            LabelFirstName.Text = .GetString("person", "first_name")
+            LocationSelector.Translate(Language)
+        End With
+    End Sub
 
 #End Region ' Fine Regions Subs
 

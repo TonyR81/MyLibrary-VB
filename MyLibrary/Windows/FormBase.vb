@@ -21,7 +21,7 @@ Public Class FormBase
     ''' <returns>Language</returns>
     Public Property Language() As Language
         Get
-            Return mLanguage
+            Return If(Not IsNothing(mLanguage), mLanguage, New Language(My.Settings.Language))
         End Get
         Set(ByVal value As Language)
             mLanguage = value

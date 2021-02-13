@@ -9,13 +9,12 @@ Public Interface ITranslatable
 
 #Region "Getters and Setters"
 
-    Property Language As Language
 
 #End Region ' End Getters and Setters
 
 #Region "Subs"
 
-    Sub Translate()
+    Sub Translate(language As Language)
 
 #End Region ' End Subs
 
