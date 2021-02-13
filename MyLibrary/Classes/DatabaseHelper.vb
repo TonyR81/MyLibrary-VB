@@ -46,7 +46,7 @@ Public Class DatabaseHelper
     ''' </summary>
     ''' <param name="user">User</param>
     ''' <returns>JObject</returns>
-    Public Function Login(ByRef user As User) As Boolean
+    Public Function Login(ByRef user As Account) As Boolean
         Try
             Return LoginFromServer(user)
         Catch server As ServerConnectionException
@@ -64,7 +64,7 @@ Public Class DatabaseHelper
     ''' </summary>
     ''' <param name="user">User</param>
     ''' <returns>JObject</returns>
-    Private Function LoginFromServer(user As User) As Boolean
+    Private Function LoginFromServer(user As Account) As Boolean
         Dim json As JObject = New ServerRequest("login").GetResponse(JsonToPost("user", user.ToJson))
         If Not IsNothing(json) Then
             If Not IsNothing(json.SelectToken("response")) Then
@@ -92,7 +92,7 @@ Public Class DatabaseHelper
     ''' </summary>
     ''' <param name="user">User</param>
     ''' <returns>Boolean</returns>
-    Private Function LoginFromLocal(user As User) As Boolean
+    Private Function LoginFromLocal(user As Account) As Boolean
         Return False
     End Function
 

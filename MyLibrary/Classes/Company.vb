@@ -9,7 +9,7 @@ Imports Newtonsoft.Json.Linq
 ''' <para>Implements ICompany</para>
 ''' </summary>
 Public Class Company
-    Inherits User
+    Inherits Account
     Implements ICompany
 
 #Region "Private Declarations"

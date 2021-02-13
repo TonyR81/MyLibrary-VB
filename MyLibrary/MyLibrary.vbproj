@@ -226,7 +226,7 @@
     <Compile Include="Interfaces\Classes\IServerRequest.vb" />
     <Compile Include="Interfaces\Classes\IServerRequestHelper.vb" />
     <Compile Include="Interfaces\Classes\IUser.vb" />
-    <Compile Include="Classes\User.vb" />
+    <Compile Include="Classes\Account.vb" />
     <Compile Include="Enumerations\GeoLocationStatus.vb" />
     <Compile Include="Interfaces\Classes\IGeoLocation.vb" />
     <Compile Include="Interfaces\Collections\ICompaniesCollection.vb" />

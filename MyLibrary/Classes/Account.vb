@@ -9,7 +9,7 @@ Imports System.Text
 ''' <para> This class contains properties, methods and functions of User object</para>
 ''' <para>Implements IUser</para>
 ''' </summary>
-Public Class User
+Public Class Account
     Inherits Database
     Implements IUser
 

@@ -20,7 +20,7 @@ Public Class LoginFormModern
     ''' </summary>
     Private Sub Login()
         Dim errorMessage As String = ""
-        Dim user As New User(TxtUsername.Text, TxtPassword.Text)
+        Dim user As New Account(TxtUsername.Text, TxtPassword.Text)
         Dim db As New DatabaseHelper()
         Try
             If db.Login(user) Then

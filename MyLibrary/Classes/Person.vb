@@ -9,7 +9,7 @@ Imports Newtonsoft.Json.Linq
 ''' <para>Implements IPerson</para>
 ''' </summary>
 Public Class Person
-    Inherits User
+    Inherits Account
     Implements IPerson
 
 #Region "Private Declarations"

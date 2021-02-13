@@ -4,7 +4,7 @@ Public Class ModernMain
 
 #Region "Private Declarations"
 
-    Public Shared User As User
+    Public Shared User As Account
 
 #End Region ' Fine Regions Private Declarations	
 
@@ -26,7 +26,7 @@ Public Class ModernMain
             Case AccountType.SUPERADMIN
                 ' TODO Implementare codice SuperAdmin
             Case AccountType.ADMIN
-                User = New User(json)
+                User = New Account(json)
             Case AccountType.COMPANY
                 User = New Company(json)
             Case AccountType.EMPLOYEE
@@ -40,7 +40,7 @@ Public Class ModernMain
     ''' Creates a new instance of ModernMain class given the user
     ''' </summary>
     ''' <param name="aUser">User</param>
-    Public Sub New(aUser As User)
+    Public Sub New(aUser As Account)
         InitializeComponent()
         User = aUser
     End Sub
