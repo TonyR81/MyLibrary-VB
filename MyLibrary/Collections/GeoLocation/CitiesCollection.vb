@@ -6,7 +6,7 @@
 ''' <para> This class contains properties, methods and functions of Municipalities Collection object</para>
 ''' <para>Implements IMunicipalities Collection</para>
 ''' </summary>
-Public Class MunicipalitiesCollection
+Public Class CitiesCollection
     Inherits CollectionBase
 
 #Region "Private Declarations"
@@ -52,7 +52,7 @@ Public Class MunicipalitiesCollection
     ''' <param name="array">JArray</param>
     Public Overrides Sub AddRange(array As JArray)
         For index As Integer = 0 To array.Count - 1
-            Items.Add(New Municipality(array(index).SelectToken("municipality")))
+            Items.Add(New City(array(index).SelectToken("city")))
         Next
     End Sub
 
@@ -66,7 +66,7 @@ Public Class MunicipalitiesCollection
 
     Public ReadOnly Property GetNames() As String()
         Get
-            Return (From municipality As Municipality In ToList() Order By municipality.Name Ascending Select municipality.Name).ToArray
+            Return (From municipality As City In ToList() Order By municipality.Name Ascending Select municipality.Name).ToArray
         End Get
     End Property
 

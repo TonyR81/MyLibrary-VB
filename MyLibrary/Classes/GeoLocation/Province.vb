@@ -12,7 +12,7 @@ Public Class Province
 #Region "Private Declarations"
 
     Private mAcronym As String
-    Private WithEvents MMunicipalities As MunicipalitiesCollection
+    Private WithEvents MCities As CitiesCollection
 
 #End Region ' Fine Regions Private Declarations	
 
@@ -35,13 +35,14 @@ Public Class Province
     ''' <summary>
     ''' Gets or sets Municipalities
     ''' </summary>
-    ''' <returns>MunicipalitiesCollection</returns>
-    Public Property Municipalities() As MunicipalitiesCollection
+    ''' <returns>CitiesCollection</returns>
+    Public Property Cities() As CitiesCollection
         Get
-            Return mMunicipalities
+            Return MCities
         End Get
-        Set(ByVal value As MunicipalitiesCollection)
-            mMunicipalities = value
+        Set(ByVal value As CitiesCollection)
+            MCities = value
+            RaiseEvent CitiesChanged(Me, value)
         End Set
     End Property
 
@@ -56,7 +57,7 @@ Public Class Province
     End Sub
 
     ''' <summary>
-    ''' Creates a new instance of Province object class given a json object that contains database object properties information
+    ''' Creates a new instance of Province object class given a json object that contains province properties information
     ''' </summary>
     ''' <param name="json">JObject</param>
     ''' <see cref="JObject"/>
@@ -65,15 +66,16 @@ Public Class Province
     End Sub
 
     ''' <summary>
-    ''' Creates a new instance of Province object class given the id number associated with the object 
-    ''' into database, the id number associated with the parent of current object into database and the name
+    ''' Creates a new instance of Province class given the id number associated with the object 
+    ''' into database, the id number associated with the parent of current province into database, the name and the cities collection
     ''' </summary>
     ''' <param name="id">Integer</param>
     ''' <param name="idParent">Integer</param>
     ''' <param name="name">String</param>
-    Public Sub New(id As Integer, idParent As Integer, name As String, municipalities As MunicipalitiesCollection)
+    ''' <param name="cities">CitiesCollection</param>
+    Public Sub New(id As Integer, idParent As Integer, name As String, cities As CitiesCollection)
         MyBase.New(id, idParent, name)
-        Me.Municipalities = municipalities
+        Me.Cities = cities
     End Sub
 
 #End Region ' End Constructors
@@ -117,6 +119,7 @@ Public Class Province
     Protected Friend Overrides Sub Initialize()
         MyBase.Initialize()
         Acronym = ""
+        Cities = New CitiesCollection
     End Sub
 
     ''' <summary>
@@ -129,7 +132,7 @@ Public Class Province
         If Not IsNothing(json) Then
             Acronym = If(Not IsNothing(json.SelectToken("acronym")), json.SelectToken("acronym"), "")
         End If
-        Municipalities = If(Not IsNothing(json.SelectToken("municipalities")), New MunicipalitiesCollection(json.SelectToken("municipalities")), New MunicipalitiesCollection)
+        Cities = If(Not IsNothing(json.SelectToken("cities")), New CitiesCollection(json.SelectToken("cities")), New CitiesCollection)
     End Sub
 
 #End Region ' Fine Regions Subs
@@ -137,6 +140,7 @@ Public Class Province
 #Region "Events"
 
     Public Event AcronymChanged(ByVal sender As Object, ByVal acronym As String)
+    Public Event CitiesChanged(ByVal sender As Object, ByVal cities As CitiesCollection)
 
 #End Region ' Fine Events
 

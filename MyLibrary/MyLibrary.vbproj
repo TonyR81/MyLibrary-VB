@@ -90,9 +90,9 @@
     <Compile Include="Classes\GeoLocation\Country.vb" />
     <Compile Include="Classes\GeoLocation\GeoLocation.vb" />
     <Compile Include="Classes\GeoLocation\LocationBase.vb" />
-    <Compile Include="Classes\GeoLocation\Municipality.vb" />
+    <Compile Include="Classes\GeoLocation\City.vb" />
     <Compile Include="Classes\GeoLocation\ZipCode.vb" />
-    <Compile Include="Collections\GeoLocation\MunicipalitiesCollection.vb" />
+    <Compile Include="Collections\GeoLocation\CitiesCollection.vb" />
     <Compile Include="Classes\GeoLocation\Province.vb" />
     <Compile Include="Classes\GeoLocation\Region.vb" />
     <Compile Include="Collections\GeoLocation\ProvincesCollection.vb" />

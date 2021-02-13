@@ -33,7 +33,7 @@ Public Class ProvincesCollection
 #Region "Constructors"
 
     ''' <summary>
-    ''' Creates a new empty instace of ProvincesCollection class
+    ''' Creates a new empty instace of Provinces Collection class
     ''' </summary>
     Public Sub New()
     End Sub
@@ -83,9 +83,9 @@ Public Class ProvincesCollection
     ''' </summary>
     ''' <param name="index">Integer</param>
     ''' <returns>MunicipalitiesCollection</returns>
-    Public ReadOnly Property GetMunicipalities(index As Integer) As MunicipalitiesCollection
+    Public ReadOnly Property GetMunicipalities(index As Integer) As CitiesCollection
         Get
-            Return CType(Items(index), Province).Municipalities
+            Return CType(Items(index), Province).Cities
         End Get
     End Property
 

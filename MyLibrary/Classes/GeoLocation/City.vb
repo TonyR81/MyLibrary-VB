@@ -1,5 +1,4 @@
-﻿Imports System.Text
-Imports Newtonsoft.Json.Linq
+﻿Imports Newtonsoft.Json.Linq
 ''' <summary>
 ''' Municipality class
 ''' <para>Created by Antonino Razeti on February 08, 2021</para>
@@ -7,7 +6,7 @@ Imports Newtonsoft.Json.Linq
 ''' <para> This class contains properties, methods and functions of Municipality object</para>
 ''' <para>Implements IMunicipality</para>
 ''' </summary>
-Public Class Municipality
+Public Class City
     Inherits LocationBase
 
 #Region "Private Declarations"
@@ -37,13 +36,13 @@ Public Class Municipality
 #Region "Constructors"
 
     ''' <summary>
-    ''' Creates a new empty instance of Municipality class
+    ''' Creates a new empty instance of City class
     ''' </summary>
     Public Sub New()
     End Sub
 
     ''' <summary>
-    ''' Creates a new instance of Municipalities class given a json object that contains database object properties information
+    ''' Creates a new instance of City class given a json object that contains city properties information
     ''' </summary>
     ''' <param name="json">JObject</param>
     ''' <see cref="JObject"/>
@@ -52,7 +51,7 @@ Public Class Municipality
     End Sub
 
     ''' <summary>
-    ''' Creates a new instance of Municipality class given the id number associated with the object 
+    ''' Creates a new instance of City class given the id number associated with the object 
     ''' into database, the id number associated with the parent of current object into database and the name
     ''' </summary>
     ''' <param name="id">Integer</param>
@@ -68,7 +67,7 @@ Public Class Municipality
 #Region "Functions"
 
     ''' <summary>
-    ''' Return a json object that represents current municipality
+    ''' Return a json object that represents current city
     ''' </summary>
     ''' <returns>JObject</returns>
     Public Overrides Function ToJson() As JObject
@@ -80,7 +79,7 @@ Public Class Municipality
     End Function
 
     ''' <summary>
-    ''' Returns a string that represents current municipality to query server database
+    ''' Returns a string that represents current city to query server database
     ''' </summary>
     ''' <returns>String</returns>
     Public Overrides Function ToPost() As String
@@ -92,13 +91,12 @@ Public Class Municipality
 #Region "Subs"
 
     ''' <summary>
-    ''' Sets current Municipality properties given specified json object
+    ''' Sets current City properties given specified json object
     ''' </summary>
     ''' <param name="json">JObject</param>
     ''' <see cref="JObject"/>
     Public Overrides Sub FromJson(json As JObject)
         MyBase.FromJson(json)
-        Name = If(Not IsNothing(json.SelectToken("name")), json.SelectToken("name"), "")
         ZipCodes = New ZipCodesCollection
     End Sub
 
